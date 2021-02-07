@@ -1,18 +1,14 @@
-### webpack学习
+## webpack 读书笔记
 
-#### 一、什么是webpack
+### 一、什么是 webpack
 
-[Webpack](https://webpack.js.org/) 是一个打包模块化 JavaScript 的工具，在 Webpack 里一切文件皆模块，通过 Loader 转换文件，通过 Plugin 注入钩子，最后输出由多个模块组合成的文件。Webpack 专注于构建模块化项目。[Webpack](https://webpack.js.org/) 是一个打包模块化 JavaScript 的工具，在 Webpack 里一切文件皆模块，通过 Loader 转换文件，通过 Plugin 注入钩子，最后输出由多个模块组合成的文件。Webpack 专注于构建模块化项目。
+> [Webpack](https://webpack.js.org/) 是一个打包模块化 JavaScript 的工具，在 Webpack 里一切文件皆模块，通过 Loader 转换文件，通过 Plugin 注入钩子，最后输出由多个模块组合成的文件。Webpack 专注于构建模块化项目。[Webpack](https://webpack.js.org/) 是一个打包模块化 JavaScript 的工具，在 Webpack 里一切文件皆模块，通过 Loader 转换文件，通过 Plugin 注入钩子，最后输出由多个模块组合成的文件。Webpack 专注于构建模块化项目。
 
 ![图1-2 Webpack 简介](http://webpack.wuhaolin.cn/1%E5%85%A5%E9%97%A8/img/1-2webpack.png)
 
+webpack 的核心是一切皆文件：JavaScript、CSS、SCSS、图片、模板，在 Webpack 眼中都是一个个模块，这样的好处是能清晰的描述出各个模块之间的依赖关系，以方便 Webpack 对模块进行组合和打包。 经过 Webpack 的处理，最终会输出浏览器能使用的静态资源。
 
-
-webpack的核心是一切皆文件：JavaScript、CSS、SCSS、图片、模板，在 Webpack 眼中都是一个个模块，这样的好处是能清晰的描述出各个模块之间的依赖关系，以方便 Webpack 对模块进行组合和打包。 经过 Webpack 的处理，最终会输出浏览器能使用的静态资源。
-
-
-
-Webpack的优点是：
+Webpack 的优点是：
 
 - 专注于处理模块化的项目，能做到开箱即用一步到位；
 - 通过 Plugin 扩展，完整好用又不失灵活；
@@ -20,11 +16,9 @@ Webpack的优点是：
 - 社区庞大活跃，经常引入紧跟时代发展的新特性，能为大多数场景找到已有的开源扩展；
 - 良好的开发体验。
 
-Webpack的缺点是只能用于采用模块化开发的项目。
+Webpack 的缺点是只能用于采用模块化开发的项目。
 
-
-
-#### 二、loader
+### 二、loader
 
 要支持非 JavaScript 类型的文件，需要使用 Webpack 的 Loader 机制
 
