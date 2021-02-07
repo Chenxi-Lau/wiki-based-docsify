@@ -8,7 +8,8 @@
 -->
 
 - [每日总结](zh-cn/learning)
+- [**JavaScript 相关**](zh-cn/js-study)
 - [**Vue 相关**](zh-cn/vue-study)
-- [**webpack 相关**](zh-cn/webpack)
+- [**Webpack 相关**](zh-cn/webpack-study)
 - [**Git 相关**](zh-cn/git-instruction)
 - [**JAVA 相关**](zh-cn/java-study)
