@@ -1,0 +1,72 @@
+<!--
+ * @Author: 刘晨曦
+ * @Date: 2021-02-07 09:28:12
+ * @LastEditTime: 2021-02-07 11:21:36
+ * @LastEditors: Please set LastEditors
+ * @Description: docsify-blog 的个人配置
+ * @FilePath: \docsify-blog\docs\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <!-- 这里更改主体颜色 -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: "Morning's Blog",
+      repo: 'https://github.com/Chenxi-Lau',
+      coverpage: false, // 加载封面, 对应 _coverpage.md
+      loadNavbar: true, // 加载导航栏，对应 _navbar.md
+      loadSidebar: true, // 加载侧边栏，对应 _sidebar.md
+      subMaxLevel: 4, // 最大层级
+      pagination: {
+        previousText: '上一章节',
+        nextText: '下一章节',
+        crossChapter: true,
+        crossChapterText: true
+      }, // 分页
+      search: {
+        paths: 'auto',
+        placeholder: '请输入要搜索的关键字',
+        noData: '没有结果',
+        depth: 6
+      } // 全局搜索
+      // plugins: [
+      //   function (hook, vm) {
+      //     hook.beforeEach(function (html) {
+      //       var url =
+      //         'https://github.com/docsifyjs/docsify/blob/master/docs/' +
+      //         vm.route.file
+      //       var editHtml = '[📝 EDIT DOCUMENT](' + url + ')\n'
+
+      //       return (
+      //         editHtml +
+      //         html +
+      //         '\n----\n' +
+      //         'Last modified {docsify-updated} ' +
+      //         editHtml
+      //       )
+      //     })
+      //   }
+      // ]
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  
+  <!-- Plugin -->
+  <!-- pagination 分页 -->
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- 全局搜素 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+</body>
+</html>
