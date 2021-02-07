@@ -1,6 +1,6 @@
-# Headline
+# Morning's Wiki
 
-> An awesome project.
+> 基于 docsify.js 的个人wiki笔记
 
 #项目运行
 
