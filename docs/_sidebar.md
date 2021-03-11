@@ -1,15 +1,20 @@
 <!--
- * @Author: your name
+ * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-02-07 15:02:44
+ * @LastEditTime: 2021-03-11 19:33:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
 -->
 
-- [每日总结](zh-cn/learning)
-- [**JavaScript 相关**](zh-cn/js-study)
-- [**Vue 相关**](zh-cn/vue-study)
-- [**Webpack 相关**](zh-cn/webpack-study)
-- [**Git 相关**](zh-cn/git-instruction)
-- [**JAVA 相关**](zh-cn/java-study)
+- [**JavaScript**](javascript/js-study)
+- [**Vue**](vue/index)
+  - [**知识梳理**](vue/document)
+- [**Webpack 相关**](webpack/index)
+  - [**学习笔记**](webpack/instruction)
+- [**Git**](git/index)
+  - [**Git 操作**](git/instruction)
+- [**JAVA 相关**](java/instruction)
+- [**项目相关**](project/index)
+  - [**解决方案**](project/solution)
+  - [**移动端适配**](project/mobile-adaptation)
