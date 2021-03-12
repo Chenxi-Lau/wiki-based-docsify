@@ -1,15 +1,15 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-03-11 19:33:43
+ * @LastEditTime: 2021-03-12 16:50:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
 -->
 
-- [**JavaScript**](javascript/js-study)
+- [**JavaScript**](javascript/instruction)
 - [**Vue**](vue/index)
-  - [**知识梳理**](vue/document)
+- [**知识梳理**](vue/document)
 - [**Webpack 相关**](webpack/index)
   - [**学习笔记**](webpack/instruction)
 - [**Git**](git/index)
