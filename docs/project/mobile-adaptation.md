@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-03-11 18:24:10
- * @LastEditTime: 2021-03-12 17:39:42
+ * @LastEditTime: 2021-03-13 10:51:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\project\mobile-adaptation.md
@@ -54,7 +54,7 @@ rem 是相对于 **根元素 font-size** 值的相对长度单位。rem 方案�
 npm i postcss-pxtorem --save-dev
 ```
 
-接着，我们需要配置一些规则，一种方法是可以在根目录下创建 postcss.config.js
+接着，我们需要配置一些规则，一种方法是可以在根目录下创建 postcss.config.js (或者.postcssrc)
 
 ```javascript
 module.exports = {
@@ -152,4 +152,108 @@ npm i postcss-pxtorem@5.1.1
 
 不过这里还有一个疑问：
 
-1. postcss 是个什么东西？
+1. PostCss 本质上是个什么东西？
+2. PostCss 与 SASS、LESS、STYLUS 有什么不同？
+
+#### PostCSS 是什么东西？
+
+按 [PostCss 官网](https://www.postcss.com.cn/)介绍，PostCSS 是一个用 JavaScript 工具和插件转化 CSS 代码的工具。换句话说，PostCSS 相当于一个平台，它能够将 CSS 代码解析成抽象语法树（Abstract Syntax Tree，AST），可以理解为下面这样一个模型：
+
+- CSS FILE（CSS 文件）
+- CSS PARSE（讲过 CSS 解析）
+- PLUGIN SYSTEM（然后通过 PostCSS 中的插件）
+- STRINGIFIER（序列化操作）
+- FINNAL CSS（最终的 CSS 文件）
+
+它能够为 CSS 提供额外的功能，通过在 PostCSS 这个平台上，我们能够开发一些插件，来处理 CSS 样式。 在 VUE CLI 中就使用了 PostCSS，且默认开启了 autoprefixer, 其他一些比较热门的 PostCSS 插件包括：
+
+##### 1. [Autoprefixer](https://github.com/postcss/autoprefixer)
+
+其作用是为 CSS 中的属性添加浏览器特定的前缀
+
+```css
+#content {
+  display: flex;
+}
+```
+
+转换后
+
+```css
+#content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+```
+
+##### 2. [cssnano](https://www.npmjs.com/package/cssnano)
+
+cssnano 会压缩你的 CSS 文件来确保在开发环境中下载量尽可能的小，这个插件通过移除注释、空白、重复规则、过时的浏览器前缀以及做出其他的优化来工作，一般能减少至少 50% 的大小。
+
+##### 3. [Postcss-sprites](https://www.npmjs.com/package/postcss-sprites)
+
+Postcss-sprites 将扫描你 CSS 中使用的所有图像，自动生成优化的 Sprites 图像和 CSS Sprites 代码
+
+```css
+.rss {
+  background: url(../img/icons/social-rss.png);
+}
+
+.twitter {
+  background: url(../img/icons/social-twitter.png);
+}
+```
+
+转换后
+
+```css
+.rss {
+  background-image: url(../img/sprite.png);
+  background-position: 0 0;
+  width: 30px;
+  height: 30px;
+}
+
+.twitter {
+  background-image: url(../img/sprite.png);
+  background-position: -30px 0;
+  width: 30px;
+  height: 30px;s
+}
+```
+
+#### PostCss 与 SASS、LESS、STYLUS 有什么不同？
+
+SASS、LESS、STYLUS 相当于预处理器（pre--processor），简单来说，预处理器（pre-processor）是你把一些长得很像 CSS 但不是 CSS 的东西丢给它，处理过后会给你编译过后的 CSS，而 CSS 再经过后处理器（ post-processor），透过一些规则帮它加上一些东西，最后产出完整的 CSS 文件。
+
+例如，在写 CSS 的时候，经常会碰到这样的问题，比如说“变量” ：
+
+```css
+h1 {
+  color: red;
+}
+.title {
+  color: red;
+}
+.classA {
+  color: red;
+}
+```
+
+但是对于大型应用来说，想要修改全部的颜色是相当繁琐地，而且还有更多的问题，比如代码复用，嵌套，Mixins（混入）等等。
+
+Sass / Less 预处理器（pre-processor）就可以很好地解决这些问题，例如上述例子可以：
+
+```css
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+```
+
+这里用了变量功能，以后想要修改 CSS 直接改变量内容就好，不用在每一个地方都改了。
