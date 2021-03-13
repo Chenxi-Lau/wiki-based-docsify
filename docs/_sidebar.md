@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-03-12 16:50:06
+ * @LastEditTime: 2021-03-13 12:00:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
@@ -18,3 +18,4 @@
 - [**项目相关**](project/index)
   - [**解决方案**](project/solution)
   - [**移动端适配**](project/mobile-adaptation)
+  - [**权限管理**](project/access-control)
