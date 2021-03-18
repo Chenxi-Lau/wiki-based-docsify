@@ -1,19 +1,19 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-03-17 18:39:29
- * @LastEditTime: 2021-03-17 20:42:25
+ * @LastEditTime: 2021-03-18 16:53:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\project\json-web-token.md
 -->
 
-# 基于 Node.js 的 JWT 鉴权方案的实现
+# Json-Web-Token 鉴权方案
 
-> 全称 **JSON Web Token**， 是目前最流行的跨域认证解决方案。基本的实现是服务端认证后，生成一个 JSON 对象，然后发回给用户，后续用户与服务端通信的时候，都要发回这个 JSON 对象。
+> JWT 全称 **JSON Web Token**， 是目前最流行的跨域认证解决方案。其基本的实现流程是服务端认证后，生成一个 JSON 对象，然后发回给用户，后续用户与服务端通信的时候，都要发回这个 JSON 对象。
 
-早前，我们介绍了[前端权限控制](https://chenxi-lau.github.io/docsify-based-wiki/#/project/access-control)的几种思路，无论是从路由层面还是视图层面、亦或者接口层面都需要基于服务端的支持。本篇文章，我们将介绍 JSON Web Token 鉴权方案，并基于 Express.js 和 Koa.js 做简单的实现。
+早前，我们介绍了[前端权限控制](https://chenxi-lau.github.io/docsify-based-wiki/#/project/access-control)的三种种思路，无论是从路由层面还是视图层面、亦或者接口层面都需要基于服务端的支持。本篇文章，我们将介绍 JWT 鉴权方案，并基于 Node.js 的 Express.js 框架做了简单的实现。
 
-首先，我们先了解一下 JWT 的相关概念，这里参考了阮一峰老师的文章[JSON Wen Token 入门教程](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
+首先，我们先了解一下 JWT 的相关概念，这里参考了阮一峰老师的文章[JSON Wen Token 入门教程](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)，顺便再整理一下：
 
 ## 跨域认证的问题
 
@@ -27,11 +27,11 @@
 
 这种模式的问题在于，假如是服务器集群，或者是跨域的服务导向架构，则要求 session 数据共享，每台服务器都能够读取 session。例如，A 网站和 B 网站是同一家公司的关联服务。现在要求，用户只要在其中一个网站登录，再访问另一个网站就会自动登录，请问怎么实现？
 
-一种解决方案是 session 数据持久化，写入数据库或别的持久层。各种服务收到请求后，都向持久层请求数据。这种方案的优点是架构清晰，缺点是工程量比较大。另外，持久层万一挂了，就会单点失败。
+一种解决方案是 session 数据持久化，写入数据库或别的持久层，各种服务收到请求后，都向持久层请求数据。这种方案的优点是架构清晰，缺点是工程量比较大。另外，持久层万一挂了，就会单点失败。
 
 另一种方案是服务器索性不保存 session 数据了，所有数据都保存在客户端，每次请求都发回服务器。JWT 就是这种方案的一个代表。
 
-而 JWT 转换了思路，将 JSON 数据返回给前端的，前端再次请求时候将数据发送到后端，后端进行验证。也就是服务器是无状态的，所以更加容易拓展。
+而 JWT 转换了思路，将 JSON 数据返回给前端的，前端再次请求时候将数据发送到后端，后端进行验证，也就是服务器是无状态的，所以更加容易拓展。
 
 ## JWT 的原理
 
@@ -45,9 +45,7 @@ JWT 的原理是，服务器认证以后，生成一个 JSON 对象，发回给�
 }
 ```
 
-以后，用户与服务端通信的时候，都要发回这个 JSON 对象。服务器完全只靠这个对象认定用户身份。为了防止用户篡改数据，服务器在生成这个对象的时候，会加上签名（详见后文）。
-
-服务器就不保存任何 session 数据了，也就是说，服务器变成无状态了，从而比较容易实现扩展。
+之后用户与服务端通信的时候，都要发回这个 JSON 对象，服务器完全只靠这个对象认定用户身份。为了防止用户篡改数据，服务器在生成这个对象的时候，会用算法进行签名。
 
 ## JWT 的数据结构
 
@@ -96,261 +94,10 @@ Base64URL 算法： JWT 作为一个令牌（token），有些场合可能会放
 
 ## 基于 Express.js 的实现
 
-我们采用 Node 的 Express 框架 + MySQL 数据，其基本流程如下所示：
+这里，我采用了 Express.js + Mysql2 + Sequelize 进行了 JWT 鉴权方案的实现。
 
-![image-20210317203000297](C:\Users\liuchenxi\AppData\Roaming\Typora\typora-user-images\image-20210317203000297.png)
-
-1. 首先，我们采用 [sequelize](https://www.npmjs.com/package/sequelize) 与 [mysql2](https://www.npmjs.com/package/mysql2) 建立数据映射表
-
-相关的内容推荐看一下[廖雪峰老师的文章](https://www.liaoxuefeng.com/wiki/1022910821149312/1101571555324224)
-
-models/user.js
-
-```javascript
-import db from '../../db.config.js'
-import Sequelize from 'sequelize'
-
-// 建立数据映射表
-let usersModel = db.define(
-  'users',
-  {
-    userId: {
-      type: Sequelize.STRING(50),
-      primaryKey: true, // 主键
-    },
-    userName: Sequelize.STRING(50),
-    password: Sequelize.STRING(50),
-    avatarPic: Sequelize.STRING(255),
-    createdTime: Sequelize.STRING(255),
-  },
-  {
-    timestamps: false, // 关闭Sequelize的自动添加timestamp的功能
-  }
-)
-
-export default usersModel
-```
-
-db.config.js 的配置如下，
-
-```javascript
-import Sequelize from 'sequelize'
-const config = {
-  host: 'localhost',
-  username: 'root',
-  password: 'liuchenxi0428',
-  database: 'blog-nuxt',
-}
-// Object-Relational Mapping，把关系数据库的表结构映射到对象上。
-let sequelize = new Sequelize(config.database, config.username, config.password, {
-  host: config.host,
-  dialect: 'mysql',
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 30000,
-  },
-})
-
-export default sequelize
-```
-
-2. 接着新建一个操作用户方法类，
-
-classes/user.js
-
-```javascript
-import crypto from 'crypto'
-import userModel from '../models/user'
-import jwt from '../../utils/jwt'
-
-export default class UserController {
-  // 用户登录方法
-  async login(req, res, next) {
-    const params = request.query
-    if (!params.userName || !params.password) {
-      return req.json({
-        code: '000002',
-        msg: '参数不合法',
-        data: [],
-      })
-    }
-    // 数据库查找用户是否存在
-    const result = await userModel.findAll({
-      where: {
-        userName: params.userName,
-        password: crypto
-          .createHash('md5')
-          .update(params.password)
-          .digest('hex'),
-      },
-    })
-    if (result.length) {
-      const token = await jwt.generateToken(result[0].userName, result[0].userId)
-      return res.json({
-        code: '0',
-        msg: 'SUCCESS',
-        data: {
-          userInfo: result[0],
-          token,
-        },
-      })
-    } else {
-      return res.json({
-        code: '000002',
-        msg: '用户名或密码错误',
-        data: [],
-      })
-    }
-  }
-  // 身份验证方法
-  async verify(req, res, next) {
-    if (req.data) {
-      return res.json({
-        code: '0',
-        msg: '身份验证成功',
-        data: {
-          userName: req.data.name,
-          userId: req.data.id,
-        },
-      })
-    } else {
-      return req.json({
-        code: '-1',
-        msg: '未获取到用户信息',
-        data: null,
-      })
-    }
-  }
-}
-```
-
-上述 Token 生成的方法，我们 [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) 这个中间件，并进行了封装，
-
-utils/jwt.js
-
-```javascript
-import jwt from 'jsonwebtoken'
-const signKey = 'liuchenxi0428'
-function generateToken(username, userId) {
-  return new Promise((resolve, reject) => {
-    const token = jwt.sign(
-      {
-        name: username,
-        _id: userId,
-      },
-      signKey,
-      {
-        expiresIn: '1h',
-      }
-    )
-    resolve(token)
-  })
-}
-
-function verifyToken(token) {
-  return new Promise((resolve, reject) => {
-    const info = jwt.verify(token.split(' ')[1], signKey)
-    resolve(info)
-  })
-}
-
-export default {
-  generateToken,
-  verifyToken,
-}
-```
-
-3. 定义相关的接口，
-
-interfaces/user.js
-
-```javascript
-import express from 'express'
-import UserController from '../classes/user'
-
-let router = express.Router()
-let user = new UserController()
-
-router.post('/login', user.login)
-router.get('/verify', user.verify)
-
-module.exports = router
-```
-
-4. 挂载路由至 app，
-
-apps.js
-
-```javascript
-import routers from './router.config' // Router
-// 挂载所有的路由
-routers.forEach((item) => {
-  app.use(item.prefix, item.router)
-})
-```
-
-其中，router.config.js 的相当于所有路由的入口，在项目比较大时方便管理
-
-```javascript
-import userRouter from './routes/interfaces/user.js'
-
-export default [
-  {
-    prefix: '/api/v1/user',
-    router: userRouter,
-  },
-]
-```
-
-5. 校验 token（采用了 Express-jwt 中间件），需要放在需要校验的路由前面，无法对前面的 URL 进行校验
-
-app.js
-
-```javascript
-//! 验证 Token 是否过期并设置白名单
-app.use(
-  expressJwt({
-    secret: 'liuchenxi0428', // 密匙
-    algorithms: ['HS256'], // 加密方法
-  }).unless({
-    path: ['/api/v1/user/login'], // 白名单，其他的URL都需要验证
-  })
-)
-```
-
-6. 捕获错误 401 错误
-
-app.js
-
-```javascript
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
-
-  //! catch 401 error
-  if (err.name === 'UnauthorizedError') {
-    res.status(401)
-    res.json({
-      code: '-1',
-      msg: err.message,
-      data: null,
-    })
-    return
-  }
-
-  // render the error page
-  res.status(err.status || 500)
-  res.render('error')
-})
-```
-
-到这里，服务端需要配置的基本结束，采用 Koa.js 流程基本一致，本想中具体不太一样的地方是 Koa 采用了 ctx 代替了 req 和 res，客服端的相关操作就不去演示了（将 Token 做本地存储及 axios 请求中携带 Token），感兴趣的可以在数据库中填充一条用户信息，进行测试。
-
-我的项目地址：https://github.com/Chenxi-Lau/vue-express-admin
+项目地址：https://github.com/Chenxi-Lau/express-jwt-demo
 
 ## Reference
 
 1. [JSON Web Token 入门教程](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
-2. [使用 koa2 实现一个简单 JWT 鉴权](https://www.jianshu.com/p/34cc51f4ad51)

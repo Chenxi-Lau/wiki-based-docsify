@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-03-17 19:24:05
+ * @LastEditTime: 2021-03-18 16:54:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
@@ -19,4 +19,4 @@
   - [**解决方案**](project/solution)
   - [**移动端适配**](project/mobile-adaptation)
   - [**前端权限管理**](project/access-control)
-  - [**基于 Node.js 的 JWT 鉴权方案的实现**](project/json-web-token)
+  - [**JWT 鉴权方案**](project/json-web-token)
