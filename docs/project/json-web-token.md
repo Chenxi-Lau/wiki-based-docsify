@@ -1,17 +1,19 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-03-17 18:39:29
- * @LastEditTime: 2021-03-18 16:53:58
+ * @LastEditTime: 2021-03-19 10:31:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\project\json-web-token.md
 -->
 
-# Json-Web-Token 鉴权方案
+# JWT 鉴权方案
 
 > JWT 全称 **JSON Web Token**， 是目前最流行的跨域认证解决方案。其基本的实现流程是服务端认证后，生成一个 JSON 对象，然后发回给用户，后续用户与服务端通信的时候，都要发回这个 JSON 对象。
 
-早前，我们介绍了[前端权限控制](https://chenxi-lau.github.io/docsify-based-wiki/#/project/access-control)的三种种思路，无论是从路由层面还是视图层面、亦或者接口层面都需要基于服务端的支持。本篇文章，我们将介绍 JWT 鉴权方案，并基于 Node.js 的 Express.js 框架做了简单的实现。
+早前，我们介绍了[前端权限控制](https://chenxi-lau.github.io/docsify-based-wiki/#/project/access-control)的三种种思路，无论是从路由层面还是视图层面、亦或者接口层面都需要基于服务端的支持。
+
+本篇文章，我们将介绍 JWT 鉴权方案，并基于 Express.js 框架做了简单的实现。
 
 首先，我们先了解一下 JWT 的相关概念，这里参考了阮一峰老师的文章[JSON Wen Token 入门教程](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)，顺便再整理一下：
 
@@ -92,7 +94,7 @@ HMACSHA256(base64UrlEncode(header) + '.' + base64UrlEncode(payload), secret)
 
 Base64URL 算法： JWT 作为一个令牌（token），有些场合可能会放到 URL（比如 api.example.com/?token=xxx）。Base64 有三个字符+、/和=，在 URL 里面有特殊含义，所以要被替换掉：=被省略、+替换成-，/替换成\_ 。
 
-## 基于 Express.js 的实现
+## Express.js 的实现
 
 这里，我采用了 Express.js + Mysql2 + Sequelize 进行了 JWT 鉴权方案的实现。
 
