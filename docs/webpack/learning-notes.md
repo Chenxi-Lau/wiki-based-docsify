@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:13:56
- * @LastEditTime: 2021-03-19 17:37:21
+ * @LastEditTime: 2021-03-20 11:58:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\webpack\instruction.md
@@ -40,19 +40,90 @@ Webpack 的打包流程基于上述的过程进行扩展，执行一个串行的
 
 ## Webpack 的核心概念
 
-webpack 的核心概念包括：入口（entry）、输出（output）、loader、插件（Plugin）
+Webpack 的核心概念包括：入口（entry）、输出（output）、loader、插件（Plugin）
 
 ### Entry
 
 Entry 是配置模块的入口，可抽象成输入，Webpack 执行构建的第一步将从入口开始搜寻及递归解析出所有入口依赖的模块。目前，有三种配置方式：
 
-| 类型   | 例子                                   | 含义                                 |
-| ------ | -------------------------------------- | ------------------------------------ |
-| String | './src/main.js'                        | 入口模块的文件路径，可以是相对路径。 |
-| Array  | ['./src/entry1.js', './src/entry2.js'] | 入口模块的文件路径，可以是相对路径。 |
-| Object | 单元格                                 | 配置多个入口，每个入口生成一个 Chunk |
+| 类型   | 例子                                                           | 含义                                 |
+| ------ | -------------------------------------------------------------- | ------------------------------------ |
+| String | './src/main.js'                                                | 入口模块的文件路径，可以是相对路径。 |
+| Array  | ['./src/entry1.js', './src/entry2.js']                         | 入口模块的文件路径，可以是相对路径。 |
+| Object | { a: './app/entry-a', b: ['./app/entry-b1', './app/entry-b2']} | 配置多个入口，每个入口生成一个 Chunk |
 
-如果是 array 类型，则搭配 output.library 配置项使用时，只有数组里的最后一个入口文件的模块会被导出。
+#### 常见场景：
+
+1. 分离 app(应用程序) 和 vendor(第三方库) 入口，webpack.config.js
+
+```javascript
+module.exports = {
+  entry: {
+    main: './src/app.js',
+    vendor: './src/vendor.js',
+  },
+}
+```
+
+vendor.js 中存入未做修改的必要 library 或文件（例如 Bootstrap, jQuery, 图片等），然后将它们打包在一起成为单独的 chunk。内容哈希保持不变，这使浏览器可以独立地缓存它们，从而减少了加载时间。
+
+2. 多页面应用程序
+
+```javascript
+module.exports = {
+  entry: {
+    pageOne: './src/pageOne/index.js',
+    pageTwo: './src/pageTwo/index.js',
+    pageThree: './src/pageThree/index.js',
+  },
+}
+```
+
+在多页面应用程序中，服务端会拉取一个新的 HTML 文档给客户端，页面重新加载此新文档，并且静态资源被重新下载。由于入口起点数量的增多，多页应用能够复用多个入口起点之间的大量代码/模块，从而可以极大地从这些技术中受益。
+
+3. 动态配置 Entry
+
+```javascript
+// 同步函数
+entry: () => {
+  return {
+    a: './pages/a',
+    b: './pages/b',
+  }
+}
+// 异步函数
+entry: () => {
+  return new Promise((resolve) => {
+    resolve({
+      a: './pages/a',
+      b: './pages/b',
+    })
+  })
+}
+```
+
+假如项目里有多个页面需要为每个页面的入口配置一个 Entry ，但这些页面的数量可能会不断增长，则这时 Entry 的配置会受到到其他因素的影响导致不能写成静态的值，其解决方法是把 Entry 设置成一个函数去动态返回上面所说的配置。
+
+### Output
+
+Output 配置如何输出最终想要的代码，类型为 object，里面包含一系列配置项。基本配置如下：
+
+```javascript
+const path = require('path')
+module.exports = {
+  output: {
+    path: path.resolve(__dirname, 'dist'), // 本地存放位置，绝对路径
+    filename: 'bundle[hash].js', // 输出文件名 hash：Chunk 的唯一标识的 Hash 值 chunkhash：Chunk 内容的 Hash 值
+    // publicPath: '', 配置发布到线上资源的 URL 前缀
+  },
+}
+```
+
+如果在编译时，不知道最终输出文件的 publicPath 是什么地址，则可以将其留空，并且在运行时通过入口起点文件中**webpack_public_path** 动态设置。
+
+```javascript
+__webpack_public_path__ = myRuntimePublicPath
+```
 
 ### Loader
 
@@ -71,11 +142,11 @@ module.exports = function(source) {
 
 #### 配置方法
 
-通常，我们在[module.rules](https://webpack.docschina.org/configuration/module/#modulerules) 配置模块的读取和解析规则，其类型是一个数组配置一项，rules 时大致通过以下方式：
+Module 用于配置如何处理模块，通常在[module.rules](https://webpack.docschina.org/configuration/module/#modulerules) 配置 Loader 的读取和解析规则，其类型是一个数组。工作流程大致如下：
 
-1. 条件匹配：通过 **test 、 include 、 exclude** 三个配置项来命中 Loader 要应用规则的文件。
-2. 应用规则：对选中后的文件通过 **use** 配置项来应用 Loader，可以只应用一个 Loader 或者按照**从后往前**的顺序应用一组 Loader，同 时还可以分别给 Loader 传入参数。
-3. 重置顺序：一组 Loader 的执行顺序默认是**从右到左**执行，通过 enforce 选项可以让其中一个 Loader 的执行顺序放到最前或者最后。
+1. 条件匹配：通过 **test 、 include 、 exclude** 三个配置项来命中 Loader 要应用规则的文件
+2. 应用规则：对选中后的文件通过 **use** 配置项来应用 Loader，可以只应用一个 Loader 或者按照**从后往前**的顺序应用一组 Loader，同 时还可以分别给 Loader 传入参数
+3. 重置顺序：一组 Loader 的执行顺序默认是**从右到左**执行，通过 enforce 选项可以让其中一个 Loader 的执行顺序放到最前或者最后
 
 ```javascript
 module.exports = {
@@ -105,6 +176,14 @@ module.exports = {
 ```
 
 ### Plugin
+
+专注处理 Webpack 在编译过程中的某个特定的任务的功能模块，可以称为插件，基本概念为：
+
+1. 是一个独立的模块
+2. 模块对外暴露一个 js 函数
+3. 函数的原型 (prototype) 上定义了一个注入 compiler 对象的 apply 方法，apply 函数中需要有通过 compiler 对象挂载的 Webpack 事件钩子，钩子的回调中能拿到当前编译的 compilation 对象，如果是异步编译插件的话可以拿到回调 callback
+4. 完成自定义子编译流程并处理 complition 对象的内部数据
+5. 如果异步编译插件的话，数据处理完成后执行 callback 回调。
 
 ## References
 
