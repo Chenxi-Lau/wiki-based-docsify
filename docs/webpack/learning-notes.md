@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:13:56
- * @LastEditTime: 2021-03-20 11:58:27
+ * @LastEditTime: 2021-03-22 20:59:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\webpack\instruction.md
@@ -134,6 +134,8 @@ Webpack 的 Loader 机制可以将文件非 JavaScript 类型的文件（如 Typ
 - 一个 Loader 的职责是单一的，只能完成一种转换
 - 一个 Loader 其实就是一个 Node.js 模块，需要这个模块导出一个函数
 
+一个基础的 Loader 代码是这样子的，
+
 ```javascript
 module.exports = function(source) {
   return source
@@ -175,15 +177,79 @@ module.exports = {
 }
 ```
 
+#### 常用 Loader
+
+1. [**file-loader**](https://www.npmjs.com/package/file-loader)：可以把 JavaScript 和 CSS 中导入图片的语句替换成正确的地址，并同时把文件输出到对应的位置。
+
+例如，CSS 源码
+
+```css
+#app {
+  background-image: url(./imgs/a.png);
+}
+```
+
+经过 file-loader 转换后的 CSS 代码
+
+```css
+#app {
+  background-image: url(5556e1251a78c5afda9ee7dd06ad109b.png);
+}
+```
+
 ### Plugin
 
-专注处理 Webpack 在编译过程中的某个特定的任务的功能模块，可以称为插件，基本概念为：
+#### 基本概念
+
+在 Webpack 运行的生命周期中会广播出许多事件，Plugin 可以监听这些事件，在合适的时机通过 Webpack 提供的 API 改变输出结果。专注处理 Webpack 在编译过程中的某个特定的任务的功能模块，可以称为插件，基本概念为：
 
 1. 是一个独立的模块
 2. 模块对外暴露一个 js 函数
 3. 函数的原型 (prototype) 上定义了一个注入 compiler 对象的 apply 方法，apply 函数中需要有通过 compiler 对象挂载的 Webpack 事件钩子，钩子的回调中能拿到当前编译的 compilation 对象，如果是异步编译插件的话可以拿到回调 callback
 4. 完成自定义子编译流程并处理 complition 对象的内部数据
 5. 如果异步编译插件的话，数据处理完成后执行 callback 回调。
+
+一个基础的 Plugin 代码是这样子的，
+
+```javascript
+class BasicPlugin {
+  constructor(options) {} // 在构造函数中获取用户给该插件传入的配置
+  // Webpack 会调用 BasicPlugin 实例的 apply 方法给插件实例传入 compiler 对象
+  apply(compiler) {
+    compiler.plugin('compilation', function(compilation) {})
+  }
+}
+module.exports = BasicPlugin // 导出 Plugin
+```
+
+在使用这个 Plugin 时，相关配置代码如下：
+
+```javascript
+const BasicPlugin = require('./BasicPlugin.js')
+module.export = {
+  plugins: [new BasicPlugin(options)],
+}
+```
+
+#### 配置方法
+
+Plugin 的配置很简单，plugins 配置项接受一个数组，数组里每一项都是一个要使用的 Plugin 的实例，Plugin 需要的参数通过构造函数传入。
+
+```javascript
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin')
+
+module.exports = {
+  plugins: [
+    // 所有页面都会用到的公共代码提取到 common 代码块中
+    new CommonsChunkPlugin({
+      name: 'common',
+      chunks: ['a', 'b'],
+    }),
+  ],
+}
+```
+
+#### 常用 Plugin
 
 ## References
 
