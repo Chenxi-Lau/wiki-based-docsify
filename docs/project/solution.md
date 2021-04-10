@@ -1,48 +1,5 @@
 ### 组件
 
-#### 一、手写搜索栏
-
-```javascript
-      <!-- 顶部搜索栏 -->
-      <!-- <div class="search-form">
-        <el-form v-model="search"
-                 label-position="top">
-          <el-row>
-            <el-col :span='6'>
-              <el-form-item label='选择时段'
-                            class="search-form-item"
-                            prop="timeRange">
-                <el-date-picker v-model="search.timeRange"
-                                type="datetimerange"
-                                start-placeholder="开始时间"
-                                end-placeholder="结束时间" />
-              </el-form-item>
-            </el-col>
-            <el-col :span='12'>
-              <el-form-item label='选择范围'
-                            style="width:50%"
-                            class="search-form-item"
-                            prop='usersOrGroup'>
-                <el-button style="min-width:94%;">
-                  <i class="h-icon-add"
-                     style='font-size:16px'></i>
-                  单击选择点位(默认全选)
-                </el-button>
-              </el-form-item>
-            </el-col>
-            <el-col :span='6'>
-              <el-form-item class="search-form-action">
-                <el-button type="primary"
-                           :min-width='78'> 查询 </el-button>
-                <el-button @click="handleReset"
-                           :min-width='78'> 重置 </el-button>
-              </el-form-item>
-            </el-col>
-          </el-row>
-        </el-form>
-      </div> -->
-```
-
 #### 二、vue 路由传参
 
 项目中很多情况下都需要进行路由之间的传值，想过很多种方式 sessionstorage/localstorage/cookie 进行离线缓存存储也可以，用 vuex 也可以，不过有些大材小用吧，不管怎么说因场景而异
