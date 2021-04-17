@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-08 10:29:43
- * @LastEditTime: 2021-03-11 19:01:31
+ * @LastEditTime: 2021-04-17 10:10:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\README.md
@@ -11,7 +11,7 @@
 
 > 基于 docsify.js 的个人 wiki 前端笔记
 
-本站基于 [docsify.js](https://docsify.js.org/#/zh-cn/) 构建，可以依托 GitHub [快速部署](https://docsify.js.org/#/zh-cn/deploy) markdown 文件
+本站基于 [docsify.js](https://docsify.js.org/#/zh-cn/) 构建，可以依托 GitHub [快速部署](https://docsify.js.org/#/zh-cn/deploy) markdown 文档
 
 ## 本站内容
 

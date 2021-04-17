@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-04-10 11:53:35
+ * @LastEditTime: 2021-04-17 10:12:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
@@ -11,7 +11,7 @@
 - [**ECMAScript**](ECMAScript/index)
   - [**Class 类**](ECMAScript/class)
 - [**Vue**](vue/index)
-  - [**组件之间的传值**](vue/component-communication)
+  - [**子组件修改父组件属性**](vue/component-communication)
 - [**Webpack 相关**](webpack/index)
   - [**学习笔记**](webpack/learning-notes)
 - [**Git**](git/index)
