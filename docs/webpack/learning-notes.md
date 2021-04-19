@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:13:56
- * @LastEditTime: 2021-04-02 16:47:07
+ * @LastEditTime: 2021-04-19 11:20:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\webpack\instruction.md
@@ -52,7 +52,7 @@ Entry 是配置模块的入口，可抽象成输入，Webpack 执行构建的第
 | Array  | ['./src/entry1.js', './src/entry2.js']                         | 入口模块的文件路径，可以是相对路径。 |
 | Object | { a: './app/entry-a', b: ['./app/entry-b1', './app/entry-b2']} | 配置多个入口，每个入口生成一个 Chunk |
 
-#### 常见场景：
+#### 常见场景
 
 1. 分离 app(应用程序) 和 vendor(第三方库) 入口，webpack.config.js
 
@@ -177,26 +177,6 @@ module.exports = {
 }
 ```
 
-#### 常用 Loader
-
-1. [**file-loader**](https://www.npmjs.com/package/file-loader)：可以把 JavaScript 和 CSS 中导入图片的语句替换成正确的地址，并同时把文件输出到对应的位置。
-
-例如，CSS 源码
-
-```css
-#app {
-  background-image: url(./imgs/a.png);
-}
-```
-
-经过 file-loader 转换后的 CSS 代码
-
-```css
-#app {
-  background-image: url(5556e1251a78c5afda9ee7dd06ad109b.png);
-}
-```
-
 ### Plugin
 
 #### 基本概念
@@ -249,7 +229,55 @@ module.exports = {
 }
 ```
 
-#### 常用 Plugin
+## 在 vue.config.js 中配置 loader 和 plugin
+
+调整 webpack 配置最简单的方式最在 configWebpack 选项中提供一个对象，
+
+```javascript
+module.exports = {
+  configureWebpack: {
+    plugins: [new MyAwesomeWebpackPlugin()],
+  },
+}
+```
+
+如果要基于环境进行配置行为，或者想要直接修改配置，那就换成一个函数 (该函数会在环境变量被设置之后懒执行)，
+
+```javascript
+module.exports = {
+  configureWebpack: (config) => {
+    if (process.env.NODE_ENV === 'production') {
+      // 为生产环境修改配置...
+    } else {
+      // 为开发环境修改配置...
+    }
+  },
+}
+```
+
+更高级的配置可以通过链式操作[webpack-chain](https://cli.vuejs.org/zh/guide/webpack.html#%E9%93%BE%E5%BC%8F%E6%93%8D%E4%BD%9C-%E9%AB%98%E7%BA%A7) 来维护。这个库提供了一个 webpack 原始配置的上层抽象，使其可以定义具名的 loader 规则和具名插件，并有机会在后期进入这些规则并对它们的选项进行修改。
+
+```js
+// vue.config.js
+module.exports = {
+  chainWebpack: (config) => {
+    // loader
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => {
+        // 修改它的选项...
+        return options
+      })
+    config.plugin('compressionPlugin').use(
+      // 实例化，需要先引入plugin
+      new CompressionPlugin({
+        ...
+      })
+    )
+  },
+}
+```
 
 ## References
 
