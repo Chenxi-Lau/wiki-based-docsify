@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-04-19 11:52:47
- * @LastEditTime: 2021-04-19 20:28:15
+ * @LastEditTime: 2021-04-20 10:55:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\vue\reactivity.md
@@ -9,31 +9,67 @@
 
 # 响应式原理
 
-> Vue.js 是一款 MVVM 框架，数据模型（ViewModel）是普通的 JavaScript 对象，但是对这些对象进行操作时，却能影响对应视图（View），它的核心实现就是「响应式系统」。
+> Vue.js 是一款 MVVM 框架，其数据模型（ViewModel）是普通的 JavaScript 对象，但是对这些对象进行操作时，却能影响对应视图（View）更新，它的核心实现就是「响应式系统」。
 
-Vue2.0 的响应式是基于 **Object.defineProperty** 的 setter 和 getter 方法的**观察者模式**来实现的。
+Vue2.0 的响应式是基于 **Object.defineProperty** 的 setter 和 getter 方法，结合**观察者模式**的结构来实现的。
 
 ## 观察者模式
 
 首先，我们先说下什么是观察者模式（Observer），又称发布-订阅者模式。基本模型如下：
 
 ```javascript
-class Observer {
-  constructor() {}
+class Dep {
+  constructor() {
+    this.subs = []
+  }
+
   // 订阅信息接口
-  subscribe() {}
+  addSub() {
+    if (this.subs.indexOf(sub) < 0) {
+      this.subs.push(sub)
+    }
+  }
+
   // 发布信息接口
-  notify() {}
+  notify() {
+    const subs = this.subs.slice() // 拷贝
+    for (let i = 0, l = subs.length; i < l; i++) {
+      subs[i].update()
+    }
+  }
+
   // 删除信息接口
   remove() {}
 }
+
+const dep = new Dep()
+
+const sub = {
+  update() {
+    console.log('sub1 update')
+  },
+}
+
+const sub1 = {
+  update() {
+    console.log('sub2 update')
+  },
+}
+
+dep.addSub(sub)
+dep.addSub(sub1)
+dep.notify() // 通知订阅者事件发生，触发他们的更新函数
 ```
+
+举个栗子, 比如客人去买蛋糕，但是店家的蛋糕还没有做好，为了不想流失客人，于是，在蛋糕没有做好的这段时间，有客户来，店家就让客人把自己的电话留下，这就是观察者模式中的**注册环节**（addSub）。然后蛋糕做好之后，一次性通知所有记录了的客人，这就是观察者的**发布环节**（notify）。
 
 ## 响应式系统实现
 
+接着，我们看下 Vue 响应式系统的具体实现。
+
 ### 1. init 阶段
 
-在 Vue 的构造函数中，对 options 的 data 进行处理，即在初始化 vue 实例的时候，对 data、props 等对象的每一个属性都通过 **Object.defineProperty** 定义一次 setter 和 getter 方法。
+Vue 的构造类中对 options 中的 data 属性 进行处理，即在初始化 vue 实例化的时候，对 data、props 等对象的每一个属性都通过 **Object.defineProperty** 定义 setter 和 getter 方法。
 
 ```javascript
 /* Vue构造类 */
@@ -72,15 +108,17 @@ function defineReactive(obj, key, val) {
 }
 ```
 
-_注：Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。_
+_注：Object.defineProperty(obj, prop, descriptor) 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。_
 
-其中，Dep 就是一个观察者类，每一个 data 的属性都会有一个 dep 对象。当 getter 调用的时候，去 dep 里注册函数，当数据发生改变的时候，统一去通知各个地方做对应的操作。Dep 的基本模式如下：
+其中，Dep 就是一个观察者的类，data 在 reactive 化的时候都会有 new 一个 dep 对象。当访问 data 中的属性时，getter 方法会被调用，同时触发 dep 里的添加订阅的接口（addSub），当数据发生改变的时候，setter 方法会被调用，此时发布信息的接口（notify）就会触发，统一去通知订阅者做对应的操作。
+
+Dep 的基本模式如下：
 
 ```javascript
 export default class Dep {
   static target: ?Watcher
   id: number
-  subs: Array<Watcher>
+  subs: Array<Watcher> // 订阅者
 
   constructor() {
     this.id = uid++
@@ -103,6 +141,7 @@ export default class Dep {
       Dep.target.addDep(this)
     }
   }
+
   // 发布
   notify() {
     const subs = this.subs.slice() // 拷贝
@@ -113,9 +152,15 @@ export default class Dep {
 }
 ```
 
+其中，Watcher 是监听者的类，相当于每一个准备买蛋糕的人，subs 订阅者中的每一个子元素都是一个 Watcher。
+
+接着，我们看下 Watcher 是 Vue 中是如何链接组件和 Dep 观察者。
+
 ### 2. mount 阶段
 
-Watcher 类的对象会在 mount 阶段调用，Watcher 实际上是连接 Vue 组件与 Dep 观察者之间的桥梁。
+组件 mount 阶段的时候，会创建一个 Watcher 类的对象。这个 Watcher 实际上是连接 Vue 组件与 Dep 的桥梁。
+
+每一个 Watcher 对应一个 vue component。，大致代码如下：
 
 ```javascript
 mountComponent(vm: Component, el: ?Element, ...) {
@@ -126,44 +171,36 @@ mountComponent(vm: Component, el: ?Element, ...) {
   new Watcher(vm, updateComponent, ...)
 }
 
+// 简化代码
 class Watcher {
-  // 代码经过简化
   constructor (vm, expOrFn, cb) {
-    this.vm = vm // 传进来的对象 例如Vue
-    this.cb = cb // 在Vue中cb是更新视图的核心，调用diff并更新视图的过程
+    this.vm = vm // 传进来的对象 例如Vue组件
+    this.cb = cb // 回调函数，调用diff并更新视图的过程
     this.newDeps = [] // 收集Deps，用于移除监听
-    this.getter = expOrFn // 传入updateComponent函数
-    this.value = this.get() // 调用组件的更新函数
-  }
-
-  // 设置Dep.target值，用以依赖收集
-  get () {
-    const vm = this.vm
-    let value = this.getter.call(vm, vm)
-    return value
+    this.getter = expOrFn // 传入的updateComponent函数
+    this.value = this.getter.call(vm, vm) // 调用组件的更新函数
   }
 
   // 添加依赖 dep.depend()时调用
   addDep (dep) {
-    // 这里简单处理，在Vue中做了重复筛选，即依赖只收集一次，不重复收集依赖
+    // Vue中做了重复筛选，即依赖只收集一次，不重复收集依赖
     this.newDeps.push(dep)
     dep.addSub(this)
   }
 
-  // 更新
+  // 更新视图
   update () {
     this.run()
   }
 
-  // 更新视图
+  // 更新视图的方法
   run () {
-    // 这里只做简单的console.log 处理，在Vue中会调用diff过程从而更新视图
     console.log(`这里会去执行Vue的diff相关方法，进而更新数据`)
   }
 }
 ```
 
-在 new Watcher 的时候，constructor 里的 this.getter.call(vm, vm)函数会被执行。getter 就是 updateComponent。这个函数会调用组件的 render 函数来更新重新渲染。
+在 new Watcher 的时候，constructor 里的 this.getter.call(vm, vm)函数会被执行，getter 就是传入的 updateComponent 函数，这个函数会调用组件的 render 函数来更新重新渲染。
 
 而 render 函数里，会访问 data 的属性，比如
 
@@ -300,4 +337,4 @@ methodsToPatch.forEach(function(method) {
 
 ---
 
-更新时间 2021.04.19
+更新时间 2021.04.20
