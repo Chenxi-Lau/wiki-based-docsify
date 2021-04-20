@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-04-19 14:24:05
+ * @LastEditTime: 2021-04-20 16:50:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
@@ -9,6 +9,7 @@
 
 - [**JavaScript**](javascript/instruction)
 - [**ECMAScript**](ECMAScript/index)
+  - [**Set**](ECMAScript/set)
   - [**Class 类**](ECMAScript/class)
 - [**Vue**](vue/index)
   - [**响应式原理**](vue/reactivity)
