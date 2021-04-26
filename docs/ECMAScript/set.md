@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-20 16:01:02
- * @LastEditTime: 2021-04-20 20:00:52
+ * @LastEditTime: 2021-04-26 17:32:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\ECMAScript\Map.md
@@ -15,36 +15,27 @@
 
 Set 本身是一个构造函数，可以接受一个数组（或者具有 iterable 接口的其他数据结构）作为参数用来初始化。
 
-```js
+```javascript
 const set = new Set([1, 2, 3, 4, 4])
-[...set]
-// [1, 2, 3, 4]
-typeof set
-// object
-set.size()
-// 4
+[...set]   // [1, 2, 3, 4]
+typeof set // object
+set.size   // 4
 ```
 
-向 Set 加入值的时候，不会发生类型转换，所以 5 和 "5" 是两个不同的值。Set 内部判断两个值是否不同，使用的算法叫做**“Same-value equality”**，它类似于精确相等运算符（ === ），主要的区别是 NaN 等于自身，而精确相等运算符认为 NaN 不等于自身。
+### 1.1 判定方法
+
+向 Set 内部加入值的时候，**不会发生类型转换**，判断两个值是否不同，Set 使用的算法叫做**Same-value equality**，它类似于精确相等运算符（ === ），主要的区别是 NaN 等于自身，而精确相等运算符认为 NaN 不等于自身。因此，
 
 ```javascript
-let set = new Set()
-let a = NaN
-let b = NaN
-set.add(a)
-set.add(b)
+let set = new Set([NaN, NaN])
 set // Set {NaN}
 ```
 
-另外，两个对象总是不相等的。
+在 Set 内部，两个对象总是不相等，例如：
 
 ```javascript
-let set = new Set()
-set.add({})
-set.size // 1
-set.add({})
+const set = new Set([{ a: 'b' }, { a: 'b' }])
 set.size // 2
-上
 ```
 
 ## 2. 实例方法
@@ -79,17 +70,16 @@ keys 方法、values 方法、entries 方法返回的都是遍历器对象，因
 ```javascript
 let set = new Set(['red', 'green', 'blue'])
 for (let item of set.keys()) {
-  console.log(item)
+  console.log(item) // red green blue
 }
-// red green blue
+
 for (let item of set.values()) {
-  console.log(item)
+  console.log(item) // red green blue
 }
-// red green blue
+
 for (let item of set.entries()) {
-  console.log(item)
+  console.log(item) // ["red", "red"]  ["green", "green"]  ["blue", "blue"]
 }
-// ["red", "red"]  ["green", "green"]  ["blue", "blue"]
 ```
 
 或者省略 values 方法，直接用 for...of 循环遍历 Set，
@@ -97,9 +87,8 @@ for (let item of set.entries()) {
 ```javascript
 let set = new Set(['red', 'green', 'blue'])
 for (let x of set) {
-  console.log(x)
+  console.log(x) // red green blue
 }
-// red green blue
 ```
 
 #### 2.2.2 forEach
@@ -112,7 +101,7 @@ set.forEach((value, key) => console.log(value * 2))
 // 2 4 6
 ```
 
-同时，set 支持 filter 和 map 方法。
+同时，Set 和 Array 方法类似，支持 filter 和 map 方法。
 
 #### 2.2.3 扩展运算符
 
