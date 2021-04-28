@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-28 14:48:12
- * @LastEditTime: 2021-04-28 20:28:29
+ * @LastEditTime: 2021-04-28 20:55:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\project\postMessage.md
@@ -17,7 +17,7 @@
 - 多窗口之间消息传递
 - 页面与嵌套的 iframe 消息传递
 
-## 1、使用方法
+## 1. 使用方法
 
 **A 页面 - 发送指令方(该页面通过 Iframe 调用第三方页面)**
 
