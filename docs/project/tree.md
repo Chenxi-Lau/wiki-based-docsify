@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-09 17:17:29
- * @LastEditTime: 2021-04-10 11:35:30
+ * @LastEditTime: 2021-04-29 09:44:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\project\tree.md
@@ -12,6 +12,8 @@
 > 在业务开发中，我们经常遇到树型结构的展示，这里总结一些常用的操作树结构的方法。
 
 ## 1. 将 SimpleData 的树结构转为普通树结构
+
+将 SimpleData 的树结构转换为普通的树结构
 
 ```javascript
 /**
@@ -53,7 +55,7 @@ function getTree(sNodes = [], key, parentKey, childKey) {
 
 ## 2. 将普通树结构转化为 SimpleData 的树结构
 
-通过递归方法，
+通过递归方法，将普通树结构转化为 SimpleData 的树结构
 
 ```javascript
 function getSimpleData(treeData = []) {
@@ -79,7 +81,7 @@ function getSimpleData(treeData = []) {
 
 ## 3. 获取树结构每一层的深度
 
-通过递归方法，
+通过递归方法，获取树结构的每一层深度，前提条件是树的形式不是 SimpleData 的形式，
 
 ```javascript
 /**
@@ -88,16 +90,23 @@ function getSimpleData(treeData = []) {
  * @return {*} 含有当前节点层级的的treeData
  * @author 刘晨曦
  */
-function getDepth(treeData) {
+const getDepth = function(treeData) {
   const depthFun = (data, depth) => {
-    if (data.depth === undefined) {
+    if (!data.depth) {
       data.depth = depth + 1
     }
     data.children && data.children.forEach((child) => depthFun(child, data.depth))
   }
   treeData.forEach((item) => {
+    if (!item.depth) {
+      item.depth = 1
+    }
     depthFun(item, item.depth)
   })
   return treeData
 }
 ```
+
+## References
+
+1. [https://element.eleme.cn/#/zh-CN/component/tree](https://element.eleme.cn/#/zh-CN/component/tree)
