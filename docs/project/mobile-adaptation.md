@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-03-11 18:24:10
- * @LastEditTime: 2021-03-13 10:54:49
+ * @LastEditTime: 2021-07-27 10:44:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\project\mobile-adaptation.md
@@ -26,24 +26,24 @@ rem 是相对于 **根元素 font-size** 值的相对长度单位。rem 方案�
 首先，在根目录 src 中新建 util 目录下新建 rem.js 等比适配文件(去掉开始的 ; )
 
 ```javascript
-;(function(doc, win) {
+(function (doc, win) {
   //  基准大小
-  const baseSize = 37.5
+  const baseSize = 37.5;
   // 监听 resize 事件, orientationchange 事件在设备的纵横方向改变时触发，Safari浏览器中使用
-  const resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
+  const resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
   //  设置 rem 的计算规则
   function reCalc() {
-    const scale = doc.documentElement.clientWidth / 750
-    if (!scale) return
+    const scale = doc.documentElement.clientWidth / 750;
+    if (!scale) return;
     // 设置页面根节点字体大小
-    doc.documentElement.style.fontSize = baseSize * scale + 'px'
+    doc.documentElement.style.fontSize = baseSize * scale + 'px';
   }
-  if (!doc.addEventListener) return
+  if (!doc.addEventListener) return;
   // 监听 resize 事件和 orientationchange 事件执行 reCalc 函数
-  win.addEventListener(resizeEvt, reCalc, false)
+  win.addEventListener(resizeEvt, reCalc, false);
   // 当初始的 HTML 文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发，执行 reCalc 函数
-  doc.addEventListener('DOMContentLoaded', reCalc, false)
-})(document, window)
+  doc.addEventListener('DOMContentLoaded', reCalc, false);
+})(document, window);
 ```
 
 ### postcss-pxtorem
@@ -66,10 +66,10 @@ module.exports = {
       propList: ['*'],
       // 过滤掉.norem-开头的class，不进行rem转换
       selectorBlackList: ['.norem'],
-      exclude: /node_modules/,
-    },
-  },
-}
+      exclude: /node_modules/
+    }
+  }
+};
 ```
 
 或者，我们可以选择在 [vue.config.js](https://cli.vuejs.org/zh/config/#css-loaderoptions) 中直接配置,
@@ -87,9 +87,9 @@ css: {
           propList: ['*'],
           // 过滤掉.norem-开头的class，不进行rem转换
           selectorBlackList: ['norem'],
-          exclude: /node_modules/,
-        }),
-      ]
+          exclude: /node_modules/
+        })
+      ];
     }
   }
 }
@@ -120,16 +120,16 @@ module.exports = {
                   selectorBlackList: [],
                   replace: true,
                   mediaQuery: false, // 是否允许媒体查询
-                  minPixelValue: 12, // 最小像素
-                }),
-              ],
-            },
-          },
-        ],
-      },
-    ],
-  },
-}
+                  minPixelValue: 12 // 最小像素
+                })
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
 ```
 
 具体地，我们可以根据实际项目需求去修改 rem.js 和 postcss-pxtorem 的相关规则，这里整个配置就完成了。
@@ -160,7 +160,7 @@ npm i postcss-pxtorem@5.1.1
 按 [PostCss 官网](https://www.postcss.com.cn/)介绍，PostCSS 是一个用 JavaScript 工具和插件转化 CSS 代码的工具。换句话说，PostCSS 相当于一个平台，它能够将 CSS 代码解析成抽象语法树（Abstract Syntax Tree，AST），可以理解为下面这样一个模型：
 
 - CSS FILE（CSS 文件）
-- CSS PARSE（讲过 CSS 解析）
+- CSS PARSE（经过 CSS 解析）
 - PLUGIN SYSTEM（然后通过 PostCSS 中的插件）
 - STRINGIFIER（序列化操作）
 - FINNAL CSS（最终的 CSS 文件）

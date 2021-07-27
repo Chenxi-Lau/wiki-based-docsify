@@ -1,23 +1,23 @@
 <!--
  * @Author: your name
  * @Date: 2021-07-06 20:25:49
- * @LastEditTime: 2021-07-06 20:29:39
+ * @LastEditTime: 2021-07-22 18:41:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\vue\router.md
 -->
 
-# 路由传参
+# vue-router 路由传参
 
 > 项目中很多情况下都需要进行路由之间的传值，本节介绍 vue 自带的路由传参的三种基本方式。
 
-先有如下场景 点击当前页的某个按钮跳转到另外一个页面去，并将某个值带过去
+假定有如下场景，点击当前页的某个按钮跳转到另外一个页面去，需要将某个参数带过去，如
 
 ```csharp
 <div class="examine" @click="insurance(2)">查看详情</div>
 ```
 
-**第一种方法：**页面刷新数据不会丢失
+## **第一种方法：**页面刷新数据不会丢失
 
 ```javascript
 methods：{
@@ -107,4 +107,4 @@ methods：{
 this.$route.query.id;
 ```
 
-特别注意哦，组件中 获取参数的时候是![route.params 而不是](https://math.jianshu.com/math?formula=route.params%20%E8%80%8C%E4%B8%8D%E6%98%AF)router 这很重要~~~
+特别注意，组件中 获取参数的时候是 route.params 而不是 router 这很重要~~~
