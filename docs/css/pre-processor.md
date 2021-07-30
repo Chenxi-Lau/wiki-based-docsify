@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-07-27 10:43:54
- * @LastEditTime: 2021-07-27 11:34:47
+ * @LastEditTime: 2021-07-30 14:33:43
  * @LastEditors: Please set LastEditors
  * @Description: CSS 预处理器的选择
  * @FilePath: \docsify-based-wiki\docs\css\pre-processor.md
@@ -30,18 +30,18 @@
 携带有 scoped 标签的样式都带带有类似 [data-v-23d425f8]的属性，保证当前样式是私有的。 如果需要修改第三方组件的样式，需要采用深度选择器。
 less 语言：
 
-```less
-.van-tabs /deep/ .van-ellipsis {
+```scss
+.van-tabs ::v-deep .van-ellipsis {
   color: blue;
 }
 ```
 
-stylus 和 Sass 语言为 >>>，scss 语言为::v-deep。
+stylus 和 Sass 语言为 >>>，less 语言为/deep/。
 
 ## 全局样式
 
-在大型项目开发中，全局样式管理非常重要，全局样式放置目录：@/styles。以 SCSS 样式为例，
-variable.scss 管理全局变量：
+在大型项目开发中，全局样式管理非常重要，通常，全局样式放置目录：@/styles。以 SCSS 样式为例，
+variable.scss 管理全局变量，例如：
 
 ```scss
 // 主题色
@@ -51,7 +51,7 @@ $theme-press-color: #340acb;
 $theme-disabled-color: #b09ef4;
 ```
 
-mixins.scss 管理全局混入：
+mixins.scss 管理全局混入，例如：
 
 ```scss
 // 居中
@@ -78,7 +78,7 @@ mixins.scss 管理全局混入：
 }
 ```
 
-global.scss 管理全局样式
+global.scss 管理全局样式，例如：
 
 ```scss
 // 设置消失过渡
@@ -104,7 +104,7 @@ global.scss 管理全局样式
 }
 ```
 
-function.scss 管理全局函数:
+function.scss 管理全局函数，例如：
 
 ```scss
 // 是否包含伪元素
@@ -118,7 +118,7 @@ function.scss 管理全局函数:
 }
 ```
 
-然后，在定义出口文件：
+然后，在定义出口文件 index.scss 中引入各个模块：
 
 ```scss
 @import './mixins/variable.scss';
@@ -127,11 +127,12 @@ function.scss 管理全局函数:
 @import './mixins/function.scss';
 ```
 
-在 vue.config.js 配置：
+最后，在 vue.config.js 配置：
 
 ```javascript
 module.exports = {
   css: {
+    // 预处理器loader传递自定义选项
     loaderOptions: {
       scss: {
         prependData: `@import '@/styles/index.scss';`
@@ -145,4 +146,25 @@ module.exports = {
 };
 ```
 
-需要注意的是，less 语言不好定义全局样式。
+需要注意的是，less/sass 语言需要额外的插件[sass-resources-loader](https://www.npmjs.com/package/sass-resources-loader)定义全局样式，以 less 为例，vue-cli@3 配置如下：
+
+```javascript
+module.exports = {
+  chainWebpack: config => {
+    const oneOfsMap = config.module.rule('scss').oneOfs.store;
+    oneOfsMap.forEach(item => {
+      item
+        .use('sass-resources-loader')
+        .loader('sass-resources-loader')
+        .options({
+          // Provide path to the file with resources
+          resources: './path/to/resources.scss',
+
+          // Or array of paths
+          resources: ['./path/to/vars.scss', './path/to/mixins.scss', './path/to/functions.scss']
+        })
+        .end();
+    });
+  }
+};
+```
