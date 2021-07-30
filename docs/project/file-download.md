@@ -1,29 +1,30 @@
 <!--
  * @Author: your name
- * @Date: 2021-02-07 09:29:49
- * @LastEditTime: 2021-07-30 15:01:58
+ * @Date: 2021-07-30 14:57:16
+ * @LastEditTime: 2021-07-30 15:04:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \docsify-based-wiki\docs\project\solution.md
+ * @FilePath: \docsify-based-wiki\docs\project\file-download.md
 -->
 
-#### 一、Vue 实现文件的上传与下载
+# Vue 实现 Get 与 Post 方式的文件下载
 
-项目需求： 前端需要传入过多的参数给后端，get 地址栏不行，只能接受 post 方式去导出数据
+> 前端需要传入过多的参数给后端，get 地址栏不行，只能接受 post 方式去导出数据
 
-##### 1、get 的下载方式
+## Get 的下载方式
+
+通常下载方式如下：
 
 ```javascript
-通常下载方式如下：
  let url =  xxxx.action?a=xx&b=yy;
  window.location.href = url;
  // 或者
  window.open(url, '_self')
 ```
 
-弊端：当请求参数较多时，get 的方式无法使用，这时候需要考虑 post 的方式，但是直接通过 ajax 的 post 的方式无法调用浏览器的下载功能
+弊端：当请求参数较多时，get 的方式无法使用，这时候需要考虑 post 的方式，但是直接通过 ajax 的 post 的方式无法调用浏览器的下载功能。
 
-##### 2、post 的下载方式
+## Post 的下载方式
 
 原理： 创建一个隐藏 form 表单，通过 form 表单的提交刷新功能，实现下载。代码如下：
 
@@ -59,4 +60,4 @@
       );
 ```
 
-注意点：传给后端的参数不是 json 对象的形式，而是 `currentPage=2&pageSize=20`, 因此需要后端兄弟的配合
+注意点：传给后端的参数不是 json 对象的形式，而是 formData 的形式, 因此需要后端的配合解决传参问题。
