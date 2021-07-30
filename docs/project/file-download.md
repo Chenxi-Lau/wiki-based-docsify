@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-07-30 14:57:16
- * @LastEditTime: 2021-07-30 15:04:48
+ * @LastEditTime: 2021-07-30 15:11:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\project\file-download.md
@@ -27,8 +27,6 @@
 ## Post 的下载方式
 
 原理： 创建一个隐藏 form 表单，通过 form 表单的提交刷新功能，实现下载。代码如下：
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](<javascript:void(0);>)
 
 ```javascript
     // vue项目代码
