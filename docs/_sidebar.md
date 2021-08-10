@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-07-30 16:03:48
+ * @LastEditTime: 2021-08-10 20:28:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
@@ -25,6 +25,8 @@
   - [**常用 plugin**](webpack/plugin)
 - [**Git**](git/index)
   - [**Git 操作**](git/instruction)
+- [**Linux**](linux/index)
+  - [**命令大全**](linux/orders)
 - [**项目相关**](project/index)
   - [**移动端适配**](project/mobile-adaptation)
   - [**前端权限管理**](project/access-control)
