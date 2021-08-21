@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-08-10 20:28:27
+ * @LastEditTime: 2021-08-21 12:05:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
@@ -22,16 +22,16 @@
 - [**Webpack 相关**](webpack/index)
   - [**学习笔记**](webpack/learning-notes)
   - [**常用 loader**](webpack/loader)
-  - [**常用 plugin**](webpack/plugin)
+  - [**常用 plugin**](webpack/plugin)lcs0428$
 - [**Git**](git/index)
   - [**Git 操作**](git/instruction)
 - [**Linux**](linux/index)
   - [**命令大全**](linux/orders)
 - [**项目相关**](project/index)
+  - [**El-Table 二次封装**](project/custom-table)
   - [**移动端适配**](project/mobile-adaptation)
   - [**前端权限管理**](project/access-control)
   - [**JWT 鉴权方案**](project/json-web-token)
   - [**操作树结构方法**](project/tree-method)
   - [**Get 与 Post 方式的文件下载**](project/file-download)
-  - [**cropperjs 图片上传**](project/image-upload)
   - [**PostMessage 跨域通信**](project/postMessage)
