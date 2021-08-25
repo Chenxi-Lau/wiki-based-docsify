@@ -8,18 +8,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
   <!-- 这里更改主体颜色 -->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4.11.4/themes/vue.css">
+  <script src="//cdn.jsdelivr.net/npm/docsify@4.11.4"></script>
+  <!-- 额外的语法高亮 -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
 </head>
 <body>
-  <div id="app"></div>
+  <nav>
+    <a href="https://github.com/Chenxi-Lau">Github</a>
+  </nav>
+  <div id="app">美好的事情将会发生</div>
   <script>
     window.$docsify = {
-      name: "Morning's wiki",
-      repo: 'https://github.com/Chenxi-Lau',
+      // el: '#main',
+      // name: "Morning's wiki",
+      // repo: 'https://github.com/Chenxi-Lau',
       coverpage: false, // 加载封面, 对应 _coverpage.md
       loadNavbar: true, // 加载导航栏，对应 _navbar.md
       loadSidebar: true, // 加载侧边栏，对应 _sidebar.md
-      subMaxLevel: 4, // 最大层级
+      subMaxLevel: 1, // 最大层级
       pagination: {
         previousText: '上一章节',
         nextText: '下一章节',
@@ -33,23 +40,15 @@
         depth: 6
       }, // 全局搜索
       plugins: [
-        function (hook, vm) {
-          hook.beforeEach(function (html) {
-            var url =
-              'https://docsify.js.org/#/'
-            var editHtml = 'Power by ' + '[docsify.js](' + url + ')\n'
-
-            return (
-              html +
-              '\n----\n' +
-              editHtml +
-              '\n' +
-              'Copyright © 2021 Morning'
-            )
-          })
+        function(hook, vm) {
+          hook.beforeEach(function(html) {
+            var url = 'https://docsify.js.org/#/';
+            var editHtml = 'Power by ' + '[docsify.js](' + url + ')\n';
+            return html + '\n----\n' + editHtml + '\n' + 'Copyright © 2021 Morning';
+          });
         }
       ]
-    }
+    };
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>

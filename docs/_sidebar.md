@@ -1,37 +1,28 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-08-21 12:05:29
+ * @LastEditTime: 2021-08-25 15:36:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
 -->
 
-- [**CSS**](css/index)
-  - [**CSS3 新特性**](css/css3)
-  - [**预处理器**](css/pre-processor)
-- [**JavaScript**](javascript/instruction)
-- [**ECMAScript**](ECMAScript/index)
-  - [**Map**](ECMAScript/map)
-  - [**Set**](ECMAScript/set)
-  - [**Class 类**](ECMAScript/class)
-- [**Vue**](vue/index)
-  - [**知识梳理**](vue/document)
-  - [**响应式原理**](vue/reactivity)
-  - [**子组件修改父组件属性**](vue/component-communication)
-- [**Webpack 相关**](webpack/index)
-  - [**学习笔记**](webpack/learning-notes)
-  - [**常用 loader**](webpack/loader)
-  - [**常用 plugin**](webpack/plugin)lcs0428$
-- [**Git**](git/index)
-  - [**Git 操作**](git/instruction)
-- [**Linux**](linux/index)
-  - [**命令大全**](linux/orders)
-- [**项目相关**](project/index)
-  - [**El-Table 二次封装**](project/custom-table)
-  - [**移动端适配**](project/mobile-adaptation)
-  - [**前端权限管理**](project/access-control)
-  - [**JWT 鉴权方案**](project/json-web-token)
-  - [**操作树结构方法**](project/tree-method)
-  - [**Get 与 Post 方式的文件下载**](project/file-download)
-  - [**PostMessage 跨域通信**](project/postMessage)
+- [**CSS**](css/)
+  - [预处理器](css/pre-processor)
+- [**JS**](js/)
+- [**ES**](es/)
+  - [Map](es/map)
+  - [Set](es/set)
+  - [Class](es/class)
+- [**Vue**](vue/)
+  - [知识梳理](vue/document)
+  - [响应式原理](vue/reactivity)
+  - [子组件修改父组件属性](vue/component-communication)
+- [**Webpack**](webpack/)
+  - [学习笔记](webpack/learning-notes)
+  - [常用 loader](webpack/loader)
+  - [常用 plugin](webpack/plugin)
+- [**Git**](git/)
+  - [基本命令](git/instruction)
+- [**Linux**](linux/)
+  - [命令大全](linux/orders)
