@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-08-25 15:36:30
+ * @LastEditTime: 2021-08-25 16:30:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
@@ -10,6 +10,7 @@
 - [**CSS**](css/)
   - [预处理器](css/pre-processor)
 - [**JS**](js/)
+  - [事件循环 (Event Loop)](js/event-loop)
 - [**ES**](es/)
   - [Map](es/map)
   - [Set](es/set)
@@ -23,6 +24,4 @@
   - [常用 loader](webpack/loader)
   - [常用 plugin](webpack/plugin)
 - [**Git**](git/)
-  - [基本命令](git/instruction)
-- [**Linux**](linux/)
-  - [命令大全](linux/orders)
+  - [git 指令](git/instruction)

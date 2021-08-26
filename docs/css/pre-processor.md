@@ -1,13 +1,13 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-07-27 10:43:54
- * @LastEditTime: 2021-07-30 14:33:43
+ * @LastEditTime: 2021-08-25 16:32:44
  * @LastEditors: Please set LastEditors
  * @Description: CSS 预处理器的选择
  * @FilePath: \docsify-based-wiki\docs\css\pre-processor.md
 -->
 
-# CSS 预处理器
+## CSS 预处理器
 
 > CSS 预处理器定义了一种新的语言，其基本思想是，用一种专门的编程语言，为 CSS 增加了一些编程的特性，将 CSS 作为目标生成文件，然后开发者就只要使用这种语言进行编码工作。通俗的说，CSS 预处理器用一种专门的编程语言，进行 Web 页面样式设计，然后再编译成正常的 CSS 文件，以供项目使用。
 
@@ -17,7 +17,7 @@
 - Less
 - Stylus
 
-## 局部样式
+### 局部样式
 
 一般都是使用 scoped 方案：
 
@@ -38,7 +38,7 @@ less 语言：
 
 stylus 和 Sass 语言为 >>>，less 语言为/deep/。
 
-## 全局样式
+### 全局样式
 
 在大型项目开发中，全局样式管理非常重要，通常，全局样式放置目录：@/styles。以 SCSS 样式为例，
 variable.scss 管理全局变量，例如：
