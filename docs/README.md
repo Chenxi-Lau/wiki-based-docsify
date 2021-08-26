@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-08 10:29:43
- * @LastEditTime: 2021-08-25 15:40:59
+ * @LastEditTime: 2021-08-26 13:46:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\README.md
@@ -26,7 +26,6 @@
   - webpack
   - vite
 - Git
-- Linux
 
 关于项目中的一些文章请参考 [Blog](https://chenxi-lau.github.io/blog-based-docsify/#/)。
 
