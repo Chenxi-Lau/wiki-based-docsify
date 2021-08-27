@@ -1,13 +1,13 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-07-27 10:43:54
- * @LastEditTime: 2021-08-25 16:32:44
+ * @LastEditTime: 2021-08-27 10:29:18
  * @LastEditors: Please set LastEditors
  * @Description: CSS 预处理器的选择
  * @FilePath: \docsify-based-wiki\docs\css\pre-processor.md
 -->
 
-## CSS 预处理器
+## 预处理器
 
 > CSS 预处理器定义了一种新的语言，其基本思想是，用一种专门的编程语言，为 CSS 增加了一些编程的特性，将 CSS 作为目标生成文件，然后开发者就只要使用这种语言进行编码工作。通俗的说，CSS 预处理器用一种专门的编程语言，进行 Web 页面样式设计，然后再编译成正常的 CSS 文件，以供项目使用。
 

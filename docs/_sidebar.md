@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-08-27 10:21:04
+ * @LastEditTime: 2021-08-27 10:32:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
@@ -18,6 +18,7 @@
   - [Class 类](es/class)
 - [**Vue**](vue/)
   - [响应式原理探究](vue/reactivity)
+  - [最佳实践方案](vue/best-practice)
   - [Props 传值](vue/props-sync)
   - [Store 数据存储](vue/store)
   - [Router 路由传参](vue/router)
