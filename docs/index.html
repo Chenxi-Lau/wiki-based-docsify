@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-08-25 15:40:20
- * @LastEditTime: 2021-08-25 16:10:21
+ * @LastEditTime: 2021-08-26 17:22:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MyGithub\wiki-based-docsify\docs\index.html
@@ -45,15 +45,15 @@
         depth: 6
       }, // 全局搜索
       plugins: [
-        function(hook, vm) {
-          hook.beforeEach(function(html) {
-            var url = 'https://docsify.js.org/#/';
-            var editHtml = 'Power by ' + '[docsify.js](' + url + ')\n';
-            return html + '\n----\n' + editHtml + '\n' + 'Copyright © 2021 Morning';
-          });
+        function (hook, vm) {
+          hook.beforeEach(function (html) {
+            var url = 'https://docsify.js.org/#/'
+            var editHtml = 'Power by ' + '[docsify.js](' + url + ')\n'
+            return html + '\n----\n' + editHtml + '\n' + 'Copyright © 2021 Morning'
+          })
         }
       ]
-    };
+    }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
