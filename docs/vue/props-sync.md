@@ -1,32 +1,35 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-04-10 11:43:59
- * @LastEditTime: 2021-08-26 15:15:20
+ * @LastEditTime: 2021-08-27 09:37:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\project\component-communication.md
 -->
 
-## .sync 属性
+## Props 传值
 
-> 在开发过程中，我们会遇到这样报错 _Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value._ 这种问题如何解决？
+> 在开发过程中，我们会遇到这样报错需要修改子组件 Props 中的数据，但这种是不允许的，Props 基本概念是向下传递，不允许子组件直接修改父组件的属性，这种问题如何解决？
 
-### 基本概念
+### 问题及原因
 
-首先，说一下 Vue 中组件传值的基本概念，
+如果在子组件直接修改父组件的值，会出现以下报错：
 
-1. 在 vue 中，父子组件的关系可以总结为： **prop** 向下传递，**事件**向上传递。父组件通过 **prop** 给子组件下发数据，子组件通过**事件**给父组件发送信息。
+_Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value._
+
+这是因为，所有的 prop 都使得其父子 prop 之间形成了一个**单向下行绑定**：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外变更父级组件的状态，从而导致你的应用的数据流向难以理解。
+
+在 Vue 中，父子组件的关系可以总结为：
+
+1. **Prop** 向下传递，**事件**向上传递。父组件通过 **Prop** 给子组件下发数据，子组件通过**事件**给父组件发送信息。
 2. 每个 Vue 实例都实现了事件接口，使用$on(eventName)监听事件；使用$emit(eventName,optionalPayload)触发事件。父组件可以在使用子组件的地方直接用 v-on 来监听子组件触发的事件。
 
-Vue 中子组件不能直接修改父组件的属性，不然出现 Warning 错误，不过可以通过以下方法来解决。
+### 解决办法
 
-### 子组件修改父组件属性
-
-#### 1. 通过事件传递
-
-子组件 child.vue 中
+#### 通过事件传递
 
 ```vue
+// 子组件 child.vue
 <template>
   <div>
     <h3>{{ word }}</h3>
@@ -56,9 +59,8 @@ export default {
 </script>
 ```
 
-在父组件中
-
 ```vue
+// 在父组件中
 <template>
   <child :word="word" @update="update"></child>
 </template>
@@ -79,9 +81,8 @@ export default {
 
 上面方法可以通过在子组件绑定值加上**.sync** 属性，来简化子组件修改父组件值的过程。
 
-在父组件中,直接在需要传递的属性后面加上.sync
-
 ```vue
+// 在父组件中,直接在需要传递的属性后面加上.sync
 <template>
   <child :word.sync="word" />
 </template>
@@ -93,9 +94,8 @@ export default {
 </script>
 ```
 
-子组件中
-
 ```vue
+// 子组件中
 <template>
   <div>
     <h3>{{ word }}</h3>
