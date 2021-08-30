@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-08-26 15:18:57
- * @LastEditTime: 2021-08-26 16:20:29
+ * @LastEditTime: 2021-08-30 10:18:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MyGithub\wiki-based-docsify\docs\js\copy.md
@@ -21,13 +21,22 @@ let obj2 = obj1;
 let obj3 = Object.assign({}, obj1);
 ```
 
-扩展运算符在多层级的情况下也是浅拷贝。
+扩展运算符（...）在多层级的情况下也是浅拷贝。简易版扩展运算符的实现：
+
+```js
+// 简单版实现
+function _spread() {
+  for (var ar = [], i = 0; i < arguments.length; i++) {
+    ar = ar.concat(arguments[i]);
+  }
+  return ar;
+}
+```
 
 ### 深拷贝
 
 ```javascript
-//  JSON.parse && JSON.stringify
-// 性能最高，速度最快，但是只能拷贝纯json
+//  JSON.parse && JSON.stringify 性能最高，速度最快，但是只能拷贝纯json
 function deepClone(obj){
   return JSON.parse(JSON.stringify(obj))
 }
