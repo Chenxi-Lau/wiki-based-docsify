@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-08-26 16:28:18
- * @LastEditTime: 2021-08-27 09:22:49
+ * @LastEditTime: 2021-10-13 13:51:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MyGithub\wiki-based-docsify\docs\vue\vuex.md
@@ -15,7 +15,7 @@
 
 store 在项目中放置的目录结构,
 
-```bash
+```sh
 └── src
     └── store
       └── modules

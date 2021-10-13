@@ -1,10 +1,11 @@
 <!--
  * @Author: your name
  * @Date: 2021-08-25 15:40:20
- * @LastEditTime: 2021-08-25 16:10:15
- * @LastEditors: your name
+ * @LastEditTime: 2021-10-13 13:53:49
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MyGithub\wiki-based-docsify\docs\_navbar.md
 -->
-- [**Blog**](https://chenxi-lau.github.io/blog-based-docsify/#/)
-- [**Github**](https://github.com/Chenxi-Lau)
+
+- [**博客**](https://lcxcsy.github.io/blog-based-docsify/#/)
+- [**Github**](https://github.com/lcxcsy)

@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-08 10:29:43
- * @LastEditTime: 2021-09-13 17:02:08
+ * @LastEditTime: 2021-10-13 13:50:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\README.md
@@ -29,12 +29,10 @@
   - vite
 - Git
 
-关于项目中的一些文章请参考 [Blog](https://chenxi-lau.github.io/blog-based-docsify/#/)。
-
 ### Run
 
-```bash
-git clone git@github.com:Chenxi-Lau/wiki-based-docsify.git
+```sh
+git clone git@github.com:lcxcsy/wiki-based-docsify.git
 
 docsify serve docs
 ```
