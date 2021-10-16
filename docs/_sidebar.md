@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-10-13 14:46:27
+ * @LastEditTime: 2021-10-16 11:50:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
@@ -16,9 +16,11 @@
   - [Map 对象](es/map)
   - [Set 对象](es/set)
   - [Class 类](es/class)
+- [TypeScript](ts/)
+  - [TypeScript](ts/)
 - [**Vue**](vue/)
   - [响应式原理探究](vue/reactivity)
-  - [最佳实践方案](vue/best-practice)
+  - [Vue2 最佳实践](vue/best-practice)
   - [Props 传值](vue/props-sync)
   - [Store 数据存储](vue/store)
   - [Router 路由传参](vue/router)
