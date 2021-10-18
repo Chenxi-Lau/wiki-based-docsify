@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-10-16 11:50:14
+ * @LastEditTime: 2021-10-18 20:03:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
@@ -16,8 +16,8 @@
   - [Map 对象](es/map)
   - [Set 对象](es/set)
   - [Class 类](es/class)
-- [TypeScript](ts/)
-  - [TypeScript](ts/)
+- [**TypeScript**](ts/)
+  - [数据类型](ts/data-type)
 - [**Vue**](vue/)
   - [响应式原理探究](vue/reactivity)
   - [Vue2 最佳实践](vue/best-practice)
@@ -31,4 +31,4 @@
   - [常用 loader](webpack/loader)
   - [常用 plugin](webpack/plugin)
 - [**Git**](git/)
-  - [git 指令](git/instruction)
+  - [常用指令](git/instruction)
