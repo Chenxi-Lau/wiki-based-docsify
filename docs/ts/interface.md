@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-10-18 20:08:15
- * @LastEditTime: 2021-10-18 20:23:04
+ * @LastEditTime: 2021-10-19 09:14:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wiki-based-docsify\docs\ts\interface.md
@@ -13,7 +13,7 @@
 
 ### 基本形式
 
-接口 interface 是一个比较重要的概念，它是对行为的抽象，而具体的行为需要由类去实现，接口 interface 中的任何代码都不会被最后编译到 JavaScript 中。
+接口 `interface` 是一个比较重要的概念，它是对行为的抽象，而具体的行为需要由类去实现，接口 `interface` 中的任何代码都不会被最后编译到 JavaScript 中。
 
 ```ts
 interface Person {

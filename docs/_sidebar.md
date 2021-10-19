@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-10-18 20:12:21
+ * @LastEditTime: 2021-10-19 09:24:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
@@ -19,6 +19,7 @@
 - [**TypeScript**](ts/)
   - [数据类型](ts/data-type)
   - [接口](ts/interface)
+  - [数组与元组](ts/tuple)
 - [**Vue**](vue/)
   - [响应式原理探究](vue/reactivity)
   - [Vue2 最佳实践](vue/best-practice)

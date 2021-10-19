@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-09-13 17:01:17
- * @LastEditTime: 2021-10-13 14:43:51
+ * @LastEditTime: 2021-10-19 13:55:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \wiki-based-docsify\docs\vue\composition-api.md
@@ -13,7 +13,14 @@
 
 官网介绍：[什么是组合式 API？](https://v3.cn.vuejs.org/guide/composition-api-introduction.html#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BB%84%E5%90%88%E5%BC%8F-api)
 
-### 在 Vue 2.0 中的使用
+composition-api 的优点：
+
+1. 逻辑耦合度更高：在 options api 中如何一个功能需要用到 data + method + watch...等更多 api，一段代码无法合并在一起，我们在阅读一段逻辑需要进行反复上下移动进行观看。而 composition api 就解决了这个问题。
+2. 功能抽离：得益于函数式编程，一个功能逻辑我们可以封装到一个 hook 中，我们直接导入 hook，运行方法，即可。
+
+缺点：从 options api 切换到 composition api 最大的问题无异于最大的问题就是没有强制的代码分区，如果书写的人没有很好的代码习惯，那么后续的人将会看的十分难受。
+
+### Vue2 中的使用
 
 ```sh
 npm i @vue/composition-api -S
@@ -103,7 +110,6 @@ export default {
 export default {
   setup() {
     const state = reactive({ count: 0, msg: 'ha' });
-
     // 监听一个数据的变化
     watch(
       () => state.count,
@@ -111,16 +117,13 @@ export default {
         console.log(count, preCount);
       }
     );
-
     // 监听多个数据的变化
     watch([() => state.count, () => state.msg], ([count, msg], [preCount, preMsg]) => {
       console.log(count, msg, preCount, preMsg);
     });
-
     const addCount = () => {
       state.count++;
     };
-
     return { ...toRefs(state), addCount };
   }
 };
@@ -159,9 +162,7 @@ export default {
   components: { Add },
   setup() {
     const state = reactive({ count: 0 });
-
     const addCount = () => state.count++;
-
     return {
       ...toRefs(state),
       addCount
@@ -180,7 +181,6 @@ export default {
     const addCount = () => {
       emit('addCount');
     };
-
     return { addCount };
   }
 };
@@ -198,7 +198,6 @@ export default {
 
 <script>
   import { computed, reactive, toRefs } from '@vue/composition-api';
-
   export default {
     setup(props, { root }) {
       const store = root.$store;
@@ -231,11 +230,9 @@ export default {
 
 ```js
 import { reactive, ref } from '@vue/composition-api';
-
 export default {
   setup() {
     const formRef = ref(null);
-
     const handleSave = () => {
       formRef.value.validate(valid => {
         if (valid) {
@@ -246,10 +243,20 @@ export default {
         }
       });
     };
-
     return {
       handleSave
     };
+  }
+};
+```
+
+#### $nextTick
+
+```js
+import Vue from 'vue';
+export default {
+  setup() {
+    Vue.nextTick();
   }
 };
 ```
