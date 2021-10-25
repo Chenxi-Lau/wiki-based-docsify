@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-08 10:29:43
- * @LastEditTime: 2021-10-19 10:20:20
+ * @LastEditTime: 2021-10-25 10:54:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-based-wiki\docs\README.md
@@ -32,7 +32,7 @@
 ### Run
 
 ```sh
-git clone git@github.com:lcxcsy/wiki-based-docsify.git
+git clone git@github.com:lcxcsy/wiki.git
 
 docsify serve docs
 ```
