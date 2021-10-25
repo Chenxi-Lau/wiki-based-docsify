@@ -1,7 +1,7 @@
 <!--
  * @Author: 刘晨曦
  * @Date: 2021-02-07 10:06:45
- * @LastEditTime: 2021-10-19 09:24:50
+ * @LastEditTime: 2021-10-25 19:02:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docsify-blog-master\docs\_siderbar.md
@@ -10,8 +10,9 @@
 - [**CSS**](css/)
   - [预处理器](css/pre-processor)
 - [**JS**](js/)
+  - [This 指向性问题](js/this)
   - [事件循环 (Event Loop)](js/event-loop)
-  - [深拷贝 & 浅拷贝](js/copy)
+  - [深拷贝 & 浅拷贝](js/clone)
 - [**ES**](es/)
   - [Map 对象](es/map)
   - [Set 对象](es/set)
