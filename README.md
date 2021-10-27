@@ -26,4 +26,6 @@
 git clone git@github.com:lcxcsy/blog.git
 
 npm run docs:dev
+
+npm run docs:build
 ```
