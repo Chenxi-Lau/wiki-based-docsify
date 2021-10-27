@@ -1,17 +1,10 @@
-/*
- * @Author: your name
- * @Date: 2021-10-26 16:16:09
- * @LastEditTime: 2021-10-27 09:53:30
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \wiki\docs\.vuepress\config.js
- */
 const nav = require('./utils/nav.js')
 const { noteSidebar, vueSidebar } = nav
 
 module.exports = {
+  base: '/blog/',
   // 页面标题
-  title: "Blog",
+  title: 'Blog',
   // 网页描述
   description: '保持一颗学徒的心',
   head: [
@@ -22,7 +15,7 @@ module.exports = {
   port: 3000,
   markdown: {
     // 代码块行号
-    lineNumbers: true
+    lineNumbers: false
   },
   themeConfig: {
     // 最后更新时间
