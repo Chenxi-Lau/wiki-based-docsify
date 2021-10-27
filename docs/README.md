@@ -1,38 +1,16 @@
-<!--
- * @Author: 刘晨曦
- * @Date: 2021-02-08 10:29:43
- * @LastEditTime: 2021-10-25 10:54:08
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \docsify-based-wiki\docs\README.md
--->
-
-## Morning's Wiki
-
-> 基于 docsify.js 的个人 wiki
-
-本站基于 [docsify.js](https://docsify.js.org/#/zh-cn/) 构建，可以依托 GitHub [快速部署](https://docsify.js.org/#/zh-cn/deploy) markdown 文档
-
-### About
-
-本站主要用于记录工作学习中梳理的前端笔记，目前，暂定分为以下几个模块:
-
-- CSS
-- JS
-- ES
-- NodeJs
-- 前端框架
-  - Vue
-  - React
-- 前端工程化
-  - webpack
-  - vite
-- Git
-
-### Run
-
-```sh
-git clone git@github.com:lcxcsy/wiki.git
-
-docsify serve docs
-```
+---
+home: true
+lang: zh-CN
+heroText: Morning's Blog
+heroImage: /logo.jpg
+actionText: 开始 →
+actionLink: /note/
+features:
+  - title: A Blog
+    details: 专注写作前端博客，记录日常所得。
+  - title: For Me
+    details: 故九万里，则风斯在下矣，而后乃今培风；背负青天，而莫之夭阏者，而后乃今将图南。
+  - title: For Interview
+    details: 南京
+    footer: Copyright © 2020-present Chenxi_Liu
+---

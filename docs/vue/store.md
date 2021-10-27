@@ -1,12 +1,3 @@
-<!--
- * @Author: 刘晨曦
- * @Date: 2021-08-26 16:28:18
- * @LastEditTime: 2021-10-13 13:51:33
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \MyGithub\wiki-based-docsify\docs\vue\vuex.md
--->
-
 ## VUEX 数据存储
 
 > 经常有很多数据需要存到 vuex 的 store 里，流程比较麻烦，这里记录一个完整了 store 的使用流程。

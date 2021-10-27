@@ -1,12 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2021-07-06 20:25:49
- * @LastEditTime: 2021-08-27 09:56:05
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \docsify-based-wiki\docs\vue\router.md
--->
-
 # Router 路由传参
 
 > 项目中很多情况下都需要进行路由之间的传值，这里介绍 vue 自带的路由传参的两种基本方式，供参考使用。
