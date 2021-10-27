@@ -35,7 +35,6 @@ const noteSidebar = [
     collapsable: false,
     children: [ 
       'node/core.md',
-      'node/core.md',
     ]
   },
   {
@@ -56,8 +55,7 @@ const vueSidebar =[
     children: [ 
       'router.md',
       'store.md',
-      'components-props.md',
-      'composition-api.md',
+      'components-props.md'
     ]
   },
   {
