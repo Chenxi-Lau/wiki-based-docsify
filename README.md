@@ -15,6 +15,8 @@
 
 2. 争取抽出时间总结最近一段时间的学习心得或者感悟。
 
+## 关于本站
+
 本站主要用于记录工作学习中梳理的前端笔记，目前，暂定分为以下几个模块:
 
 - CSS
@@ -40,5 +42,5 @@ npm run docs:dev
 # 本地打包
 npm run docs:build
 # 自动部署GitHub Pages
-bash deploy.sh
+bash deploy.sh XXX "XXX"
 ```
