@@ -2,7 +2,7 @@
 
 > 在业务开发中，我们经常遇到树型结构的展示，这里总结一些常用的操作树结构的方法。
 
-## 1. 将 SimpleData 的树结构转为普通树结构
+## 1.将 SimpleData 的树结构转为普通树结构
 
 将 SimpleData 的树结构转换为普通的树结构
 
@@ -43,7 +43,7 @@ function getTree(sNodes = [], key, parentKey, childKey) {
 }
 ```
 
-## 2. 将普通树结构转化为 SimpleData 的树结构
+## 2.将普通树结构转化为 SimpleData 的树结构
 
 通过递归方法，将普通树结构转化为 SimpleData 的树结构
 
@@ -74,7 +74,7 @@ function getSimpleData(treeData = []) {
 }
 ```
 
-## 3. 获取树结构每一层的深度
+## 3.获取树结构每一层的深度
 
 通过递归方法，获取树结构的每一层深度，前提条件是树的形式不是 SimpleData 的形式，
 

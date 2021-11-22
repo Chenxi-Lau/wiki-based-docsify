@@ -17,7 +17,7 @@
 
    - 拦截器验证 Token
 
-## 路由层面（导航守卫）
+## 1.路由层面（导航守卫）
 
 通常，单页面应用（SPA）结合 vue-router 和 vuex 可以实现的一套完整的路由体系，主要分为两种方式，一种是直接通过 vue-router 中的 [beforeEach](https://router.vuejs.org/zh/api/#router-beforeeach) 钩子限制路由跳转，另外一种一种是通过 vue-router 中的 [addRoute](https://router.vuejs.org/zh/api/#router-addroute) 方法注入路由实现控制。
 
@@ -286,7 +286,7 @@ function recursionRouter(userRoutes = [], allRoutes = []) {
 1. [详解基于 vue，vue-router, vuex 以及 addRoutes 进行权限控制](https://www.cnblogs.com/zhengrunlin/p/8981017.html)
 2. [手摸手，带你用 vue 撸后台 系列二(登录权限篇)](https://segmentfault.com/a/1190000009506097)
 
-## 视图层面
+## 2.视图层面
 
 路由层面主要用于控制菜单页面权限，某些场景下我们需要对视图层面进行一些控制，例如，我们根据后台返回的权限信息判断当前用户可以看到哪些应用的入口或者按钮操作，这些可以通过**指令控制**来实现。
 
@@ -341,7 +341,7 @@ import '@/utils/authBtn.js';
 
 因为 v-show 的话，dom 其实没有隐藏，用户可以改变 display 就看到，v-if 呢，则是删除之后会遗留备注\<!-- --> 信息。
 
-## 接口层面
+## 3.接口层面
 
 在实际项目使用中，请求库以 axios 较多，我们通常会使用 axios 的 API axios.interceptors.request.use 和 axios.interceptors.response.use 拦截器来做权限管理。
 
@@ -411,7 +411,7 @@ axios.interceptors.response.use(
 );
 ```
 
-## 思考
+## 4.思考
 
 1. 路由控制中为什么用 to.matched 来判断 ？
 

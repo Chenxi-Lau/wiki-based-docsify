@@ -39,6 +39,19 @@ const noteSidebar = [
     ]
   }
 ]
+
+// 面试总结
+const interviewSidebar = [
+  {
+    title: '面试经验',
+    collapsable: false,
+    children: [ 
+      'honer.md'
+    ]
+  }
+]
+
+
 // Vue框架相关
 const vueSidebar =[
   {
@@ -117,11 +130,9 @@ const webpackSidebar = [
 
 // 算法数据结构相关
 
-
-// 面试总结
-
 module.exports = {
   noteSidebar,
+  interviewSidebar,
   vueSidebar,
   webpackSidebar,
   projectSidebar

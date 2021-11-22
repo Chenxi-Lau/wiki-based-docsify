@@ -1,27 +1,7 @@
-# 学习笔记
+> TypeScript 是 JavaScript 的一个超集，主要提供了类型系统和对 ES6 的支持，[TypeScript 官网](https://www.tslang.cn/)。
 
-本站基于 [vuepress](https://vuepress.vuejs.org/zh/) 构建，可以依托 GitHub [快速部署](https://docsify.js.org/#/zh-cn/deploy) markdown 文档
+TypeScript 的优点：
 
-## About
-
-本站主要用于记录工作学习中梳理的前端笔记，目前，暂定分为以下几个模块:
-
-- CSS
-- JS
-- ES
-- NodeJs
-- 前端框架
-  - Vue
-  - React
-- 前端工程化
-  - webpack
-  - vite
-- Git
-
-### Run
-
-```sh
-git clone git@github.com:lcxcsy/wiki.git
-
-npm run docs:dev
-```
+1. 能在开发过程中更快的发现潜在问题。
+2. 对编辑器更友好的代码提示功能。
+3. 代码语义更清晰易懂。

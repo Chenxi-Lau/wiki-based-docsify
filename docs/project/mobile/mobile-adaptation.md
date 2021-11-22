@@ -8,7 +8,7 @@
 - [ ] vh/vw 方案
 - [ ] 基于@media（媒体查询）的响应式布局
 
-## rem 方案
+## 1.rem 方案
 
 rem 是相对于 **根元素 font-size** 值的相对长度单位。rem 方案的实现过程是根据屏幕宽度设置 HTML 标签的 font-size (通过 **document.documentElement.style.fontSize** 获取)，在布局时使用 rem 单位进行样式布局，达到自适应的目的，是**弹性布局**的一种实现方式。
 

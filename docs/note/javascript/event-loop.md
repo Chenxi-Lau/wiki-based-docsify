@@ -2,13 +2,13 @@
 
 > JavaScript 代码的执行过程中，除了依靠函数调用栈来搞定函数的执行顺序外，还依靠任务队列(task queue)来搞定另外一些代码的执行。整个执行过程，我们称为事件循环过程。
 
-## JS 单线程
+## 1.JS 单线程
 
 Javascript 是一门单线程语言，单线程的原因与之用途有关（浏览器脚本语言）。
 
 单线程能够保证一致性，如果有两个线程，一个线程点击了一个元素，另一个删除了一个元素，浏览器就不知道以哪个为准了。因此 JS 的单线程实际上是指单个脚本只能在一个线程上运行，所有任务需要排队执行，前一个任务结束，才会执行后一个任务。
 
-## 调用栈
+## 2.调用栈
 
 在 JavaScript 运行的时候，主线程会形成一个栈，通常这个栈被称为调用栈 Call Stack，或者执行栈（Execution Context Stack），调用栈，顾名思义是具有 LIFO（后进先出，Last in First Out）的结构。
 
@@ -17,7 +17,7 @@ Javascript 是一门单线程语言，单线程的原因与之用途有关（浏
 - 当前函数执行完毕后，解释器会将其执行上下文清除调用栈，继续执行剩余执行上下文中的剩余代码
 - 但分配的调用栈空间被占满，会引发 “堆栈溢出” 的报错
 
-## 任务队列
+## 3.任务队列
 
 JavaScript 将所有执行任务分为了同步任务和异步任务。
 
@@ -43,7 +43,7 @@ JavaScript 将所有执行任务分为了同步任务和异步任务。
 - Async/Await(实际就是 promise)
 - MutationObserver(html5 新特性)
 
-## 事件循环
+## 3.事件循环
 
 事件循环的具体流程如下：
 
@@ -110,7 +110,7 @@ let promise_ = new Promise((resolve,reject){ resolve(undefined)})
 - 执行完成，执行 await 后面的语句，输出 async1 end
 - 最后，执行下一个宏任务，即执行 setTimeout，输出 setTimeout
 
-## Reference
+## 5.Reference
 
 1. [说说 JS 的事件循环机制](https://mp.weixin.qq.com/s/G2L_9kj8ST0_HPG7yxd2lw)
 2. [十几张生动形象的 GIF 图带你彻底掌握 EventLoop](https://mp.weixin.qq.com/s/a_vfNw0rI2bZHG9xY_7z1Q)

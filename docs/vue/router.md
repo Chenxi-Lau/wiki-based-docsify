@@ -8,7 +8,7 @@
 <div class="examine" @click="insurance(2)">查看详情</div>
 ```
 
-## Params 模式
+## 1.Params 模式
 
 ```js
 methods：{
@@ -47,7 +47,7 @@ this.$route.params.id
 
 特别注意，组件中 获取参数的时候是 route.params 而不是 router 这很重要。
 
-## Query 模式
+## 2.Query 模式
 
 使用 path 来匹配路由，然后通过 query 来传递参数，这种情况下 query 传递的参数会显示在 url 后面?id=？
 
@@ -80,7 +80,7 @@ methods：{
 this.$route.query.id;
 ```
 
-### 总结
+## 3.总结
 
 1. 接收方式
    - query 传参：this.$route.query.id

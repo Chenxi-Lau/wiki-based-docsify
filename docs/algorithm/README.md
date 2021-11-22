@@ -1,10 +1,17 @@
-<!--
- * @Author: your name
- * @Date: 2021-10-26 16:48:53
- * @LastEditTime: 2021-10-26 17:08:31
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \wiki\docs\algorithm\README.md
--->
-
 # 数据结构和算法
+
+## 文档目录
+
+- 数组
+- 栈
+- 队列
+- 优先队列
+- 单向链表
+- 双向列表
+- 集合
+- 字典
+- 哈希表
+- 树
+- 二叉树
+- 二叉搜索树
+- 图

@@ -7,7 +7,7 @@
 - 对称加密：双方使用的同一个密钥，既可以加密又可以解密，这种加密方法称为对称加密，也称为单密钥加密。几种对称性加密算法：AES，DES，3DES。
 - 非对称加密：有两个钥匙，及公钥（Public Key）和私钥（Private Key）。公钥和私钥是成对的存在，如果对原文使用公钥加密，则只能使用对应的私钥才能解密；因为加密和解密使用的不是同一把密钥，所以这种算法称之为非对称加密算法。几种非对称性加密算法：RSA，DSA，ECC。
 
-## 前端加密/解密函数
+## 1.前端加密/解密函数
 
 首先，用 MD5 算法（签名算法）对用户名进行加密生成 16 位秘钥，然后用 AES/ECB/PKCS5Padding 对密码进行加密（解密）：
 
@@ -56,7 +56,7 @@ function aesDecrypt(name, password) {
 }
 ```
 
-## Java 解密方式
+## 2.Java 解密方式
 
 ```java
 import org.springframework.util.StringUtils;

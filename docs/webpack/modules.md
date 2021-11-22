@@ -2,7 +2,7 @@
 
 > Webpack 的核心概念包括：入口（entry）、输出（output）、loader、插件（Plugin）
 
-## Entry
+## 1.Entry
 
 Entry 是配置模块的入口，可抽象成输入，Webpack 执行构建的第一步将从入口开始搜寻及递归解析出所有入口依赖的模块。目前，有三种配置方式：
 
@@ -64,7 +64,7 @@ entry: () => {
 
 假如项目里有多个页面需要为每个页面的入口配置一个 Entry ，但这些页面的数量可能会不断增长，则这时 Entry 的配置会受到到其他因素的影响导致不能写成静态的值，其解决方法是把 Entry 设置成一个函数去动态返回上面所说的配置。
 
-## Output
+## 2.Output
 
 Output 配置如何输出最终想要的代码，类型为 object，里面包含一系列配置项。基本配置如下：
 
@@ -85,7 +85,7 @@ module.exports = {
 __webpack_public_path__ = myRuntimePublicPath;
 ```
 
-## Loader
+## 3.Loader
 
 ### 基本概念
 
@@ -137,7 +137,7 @@ module.exports = {
 };
 ```
 
-## Plugin
+## 4.Plugin
 
 ### 基本概念
 
@@ -239,7 +239,7 @@ module.exports = {
 }
 ```
 
-## References
+## 5.References
 
 1. [Webpack 中文官网](https://webpack.docschina.org/)
 2. [深入浅出 Webpack](http://webpack.wuhaolin.cn/)

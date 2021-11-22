@@ -20,7 +20,7 @@ window.navagator.connection;
 
 虽然 BOM 的 API 无法获取我们可以采取其他方式。
 
-## 浏览器环境
+## 1.浏览器环境
 
 > [Only WebRTC (as far as I know) gives the ability to know your local IP addresses in the JavaScript code running inside the browser (Flash had that also, but it is now quite dead)](https://bloggeek.me/psa-mdns-and-local-ice-candidates-are-coming/)
 
@@ -75,7 +75,7 @@ getLocalIp().then(res => {
 });
 ```
 
-## NODE 环境
+## 2.NODE 环境
 
 在 NODE 环境下获取到 IP 地址的方法就比较多。
 
@@ -185,7 +185,7 @@ getLocalIp().then(res => {
 });
 ```
 
-## References
+## 3.References
 
 1. [mDNS and .local ICE candidates are coming](https://bloggeek.me/psa-mdns-and-local-ice-candidates-are-coming/)
 2. [JS/node 获取本机 ip 的方法](https://juejin.cn/post/6972913930226106399)

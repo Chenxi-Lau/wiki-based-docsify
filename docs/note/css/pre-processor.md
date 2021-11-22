@@ -8,7 +8,7 @@
 - Less
 - Stylus
 
-## 局部样式
+## 1.局部样式
 
 一般都是使用 scoped 方案：
 
@@ -29,7 +29,7 @@ less 语言：
 
 stylus 和 Sass 语言为 >>>，less 语言为/deep/。
 
-## 全局样式
+## 2.全局样式
 
 在大型项目开发中，全局样式管理非常重要，通常，全局样式放置目录：@/styles。以 SCSS 样式为例，
 variable.scss 管理全局变量，例如：

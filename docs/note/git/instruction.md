@@ -1,17 +1,8 @@
-<!--
- * @Author: your name
- * @Date: 2021-02-07 14:27:11
- * @LastEditTime: 2021-03-11 19:11:27
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \docsify-based-wiki\docs\Git\git-instruction.md
--->
+# 工作流程
 
-> Git 的工作就是创建和保存你项目的快照及与之后的快照进行对比。本章将对有关创建与提交你的项目快照的命令作介绍。
+> Git 常用的 6 个命令：**git clone**、**git push**、**git add** 、**git commit**、**git checkout**、**git pull**
 
-### 工作流程
-
-Git 常用的是以下 6 个命令：**git clone**、**git push**、**git add** 、**git commit**、**git checkout**、**git pull**，其基本示意图为：
+Git 工作流程的基本示意图为：
 
 ![img](https://www.runoob.com/wp-content/uploads/2015/02/git-command.jpg)
 
@@ -34,7 +25,7 @@ $ git commit
 - git add . - 添加文件到暂存区。
 - git commit - 将暂存区内容添加到仓库中。
 
-### 常用命令
+## 1.常用命令
 
 | 命令       | 说明                                     |
 | ---------- | ---------------------------------------- |
@@ -46,7 +37,7 @@ $ git commit
 | git rm     | 删除工作区文件。                         |
 | git mv     | 移动或重命名工作区文件。                 |
 
-### 远程操作
+## 2.远程操作
 
 | 命令      | 说明                 |
 | --------- | -------------------- |
@@ -54,7 +45,7 @@ $ git commit
 | git pull  | 下载远程代码并合并。 |
 | git push  | 上传远程代码并合并。 |
 
-### 分支管理
+## 3.分支管理
 
 | 命令                     | 说明           |
 | ------------------------ | -------------- |

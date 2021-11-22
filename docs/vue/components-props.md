@@ -2,7 +2,7 @@
 
 > 在开发过程中，我们会遇到这样报错需要修改子组件 Props 中的数据，但这种是不允许的，Props 基本概念是向下传递，不允许子组件直接修改父组件的属性，这种问题如何解决？
 
-## 问题及原因
+## 1.问题及原因
 
 如果在子组件直接修改父组件的值，会出现以下报错：
 
@@ -15,7 +15,7 @@ _Avoid mutating a prop directly since the value will be overwritten whenever the
 1. **Prop** 向下传递，**事件**向上传递。父组件通过 **Prop** 给子组件下发数据，子组件通过**事件**给父组件发送信息。
 2. 每个 Vue 实例都实现了事件接口，使用$on(eventName)监听事件；使用$emit(eventName,optionalPayload)触发事件。父组件可以在使用子组件的地方直接用 v-on 来监听子组件触发的事件。
 
-## 解决办法
+## 2.解决办法
 
 ### 通过事件传递
 

@@ -1,10 +1,10 @@
 # 响应式原理
 
-::: Vue.js 是一款 MVVM 框架，其数据模型（ViewModel）是普通的 JavaScript 对象，但是对这些对象进行操作时，却能影响对应视图（View）更新，它的核心实现就是「响应式系统」。
+> Vue.js 是一款 MVVM 框架，其数据模型（ViewModel）是普通的 JavaScript 对象，但是对这些对象进行操作时，却能影响对应视图（View）更新，它的核心实现就是「响应式系统」。
 
 Vue2.0 的响应式是基于 **Object.defineProperty** 的 setter 和 getter 方法，结合**观察者模式**的结构来实现的。
 
-## 观察者模式
+## 1.观察者模式
 
 首先，我们先说下什么是观察者模式（Observer），又称发布-订阅者模式。基本模型如下：
 
@@ -54,11 +54,11 @@ dep.notify(); // 通知订阅者事件发生，触发他们的更新函数
 
 举个栗子, 比如客人去买蛋糕，但是店家的蛋糕还没有做好，为了不想流失客人，于是，在蛋糕没有做好的这段时间，有客户来，店家就让客人把自己的电话留下，这就是观察者模式中的**注册环节**（addSub）。然后蛋糕做好之后，一次性通知所有记录了的客人，这就是观察者的**发布环节**（notify）。
 
-## 响应式系统实现
+## 2.响应式系统实现
 
 接着，我们看下 Vue 响应式系统的具体实现。
 
-### 1. init 阶段
+### init 阶段
 
 Vue 的构造类中对 options 中的 data 属性 进行处理，即在初始化 vue 实例化的时候，对 data、props 等对象的每一个属性都通过 **Object.defineProperty** 定义 setter 和 getter 方法。
 
@@ -147,7 +147,7 @@ export default class Dep {
 
 接着，我们看下 Watcher 是 Vue 中是如何链接组件和 Dep 观察者。
 
-### 2. mount 阶段
+### mount 阶段
 
 组件 mount 阶段的时候，会创建一个 Watcher 类的对象。这个 Watcher 实际上是连接 Vue 组件与 Dep 的桥梁。
 
@@ -225,7 +225,7 @@ depend () {
 
 收集完所有依赖 blogTitle 属性的组件所对应的 Watcher 之后，当它发生改变的时候，就会去通知 Watcher 更新关联的组件。
 
-### 3. 更新阶段
+### 更新阶段
 
 当 blogTitle 发生改变的时候，就去调用 Dep 的 notify 函数,然后通知所有的 Watcher 调用 update 函数更新。
 
@@ -241,7 +241,7 @@ notify () {
 用一张图来表示：
 ![img](https://pic2.zhimg.com/80/v2-cbc890983833db0a0b35841c05f4d3d1_720w.jpg)
 
-## Watcher 的产生
+## 3.Watcher 的产生
 
 在 vue 中，共有 4 种情况会产生 Watcher：
 
@@ -250,7 +250,7 @@ notify () {
 3. 用户在 vue 对象内创建的计算属性，本质上也是 watcher
 4. 用户使用 vm.\$watch 创建的 watcher
 
-## 总结
+## 4.总结
 
 ![img](https://pic3.zhimg.com/80/v2-abc8633ff694fe9aef01c0673dcac976_720w.jpg)
 
@@ -260,7 +260,7 @@ notify () {
 
 2. 第二步：当 data 属性发生改变之后，就会遍历 sub 里所有的 watcher 对象，通知它们去重新渲染组件。
 
-## 注意事项
+## 5.注意事项
 
 1. 对于对象，Vue 无法检测 property 的添加或移除
 
@@ -321,11 +321,7 @@ methodsToPatch.forEach(function (method) {
 
 同样，可以使用 Vue.set(vm.items, indexOfItem, newValue)修改。
 
-### References
+### 6.References
 
 1. [最简化 VUE 的响应式原理](https://zhuanlan.zhihu.com/p/88648401)
 2. [VUE 源码解读之响应式系统及 Watcher 的调度实现](https://mp.weixin.qq.com/s/zDv_IQ36o_rRD25xN9uyuw)
-
----
-
-更新时间 2021.04.20

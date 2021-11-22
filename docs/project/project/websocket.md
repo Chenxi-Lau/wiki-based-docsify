@@ -2,7 +2,7 @@
 
 > 定义 Websocket 的类。
 
-## 类函数
+## 1.类函数
 
 ```js
 /**
@@ -113,7 +113,7 @@ export default class CustomWebSocket {
 }
 ```
 
-## 使用方式
+## 2.使用方式
 
 ```js
 import CustomWebSocket from './utils/CustomWebSocket';
@@ -145,6 +145,6 @@ export default {
 };
 ```
 
-## Reference
+## 3.Reference
 
 1. [WebSocket](https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket)

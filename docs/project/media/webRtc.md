@@ -2,7 +2,7 @@
 
 > WebRtc 是一种免费开源的实时通信技术，集成了音视频采集、编解码、流媒体传输、渲染等功能，并在 Native C++ 代码基础上，封装了简单的 JavaScript API，仅通过几行代码即可实现点对点通信，且具有良好的跨平台特性，目前主流的浏览器都已支持。
 
-## Web API
+## 1.Web API
 
 WebRtc 主要分为三个 API，
 
@@ -153,7 +153,7 @@ document.querySelector('button#send').onclick = function () {
 };
 ```
 
-## References
+## 2.References
 
 1. [https://javascript.ruanyifeng.com/htmlapi/webrtc.html](https://javascript.ruanyifeng.com/htmlapi/webrtc.html)
 2. [https://developer.mozilla.org/zh-CN/docs/Web/API/WebRTC_API](https://developer.mozilla.org/zh-CN/docs/Web/API/WebRTC_API)

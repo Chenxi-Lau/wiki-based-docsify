@@ -1,18 +1,8 @@
-# 特点
-
-TypeScript 是 JavaScript 的一个超集，主要提供了类型系统和对 ES6 的支持，[TypeScript 官网](https://www.tslang.cn/)。
-
-TypeScript 的优点：
-
-1. 能在开发过程中更快的发现潜在问题。
-2. 对编辑器更友好的代码提示功能。
-3. 代码语义更清晰易懂。
-
 # 基础知识
 
 > TypeScript 数据类型包括：number、string、boolean、null、undefined、symbol、void、Any。
 
-## 原始数据类型
+## 1.原始数据类型
 
 JavaScript 分为原始数据类型和对象类型，原始数据类型包括：`number`、`string`、`boolean`、`null`、`undefined` 和 `symbol`。 在 TypeScript 中，我们可以如下定义：
 
@@ -24,7 +14,7 @@ let tsNull: null = null;
 let tsUndefined: undefined = undefined;
 ```
 
-## void 空值
+## 2.void 空值
 
 在 JavaScript 中，是没有空值(`void`)的概念的，但在 TypeScript 中，可以使用 `void` 来表示一个没有返回值的函数：
 
@@ -41,7 +31,7 @@ let voidValue1: void = null;
 let voidValue2: void = undefined;
 ```
 
-## void、null 和 undefined
+## 3.void、null 和 undefined
 
 void 和 null 与 undefined 是有一定区别的。
 
@@ -52,7 +42,7 @@ let tsNumber1: number = undefined;
 let tsNumber2: number = null;
 ```
 
-## Any
+## 4.Any
 
 任意值 `Any` 用来表示可以接受任何类型的值。
 
@@ -71,7 +61,7 @@ tsValue = 123;
 tsValue = '123';
 ```
 
-## 数组和元组
+## 5.数组和元组
 
 ### 数组
 
@@ -124,7 +114,7 @@ console.log(tuple[1]); // 123
 console.log(tuple[2]); // 报错
 ```
 
-## 类
+## 6.类
 
 ### 类的继承
 
@@ -153,7 +143,7 @@ teacher.sayHello(); // hello, why
 teacher.sayTeacherHello(); // hello, why
 ```
 
-## 接口
+## 7.接口
 
 > 接口（Interface）是 TypeScript 中一个重要的概念，主要用于约束一个函数，对象，以及类的结构和类型。
 

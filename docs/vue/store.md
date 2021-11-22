@@ -1,10 +1,10 @@
-## Vuex 状态管理
+# Vuex 状态管理
 
 > vuex 即全局状态管理系统，采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。项目中，经常有很多数据需要存到 vuex 的 store 里，流程比较麻烦，这里记录一个完整了 store 的使用流程。
 
 vuex 官网介绍：[https://vuex.vuejs.org/zh/](https://vuex.vuejs.org/zh/)
 
-### 目录结构
+## 1.目录结构
 
 store 在项目中放置的目录结构,
 
@@ -44,7 +44,7 @@ export default new Vuex.Store({
 });
 ```
 
-### modules 模板
+## 2.modules 模板
 
 这里选用了一个存储用户信息的 store,
 
@@ -125,7 +125,7 @@ const user = {
 export default user;
 ```
 
-### 使用规则
+## 3.使用规则
 
 ```js
 import { mapGetters, mapActions } from 'vuex';
@@ -140,7 +140,7 @@ export default {
 };
 ```
 
-## 其他方法
+## 4.其他方法
 
 如果涉及到的本地存储（localStorage、sessionStorage）的方法如下：
 

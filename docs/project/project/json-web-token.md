@@ -6,7 +6,7 @@
 
 首先，我们先了解一下 JWT 的相关概念，这里参考了阮一峰老师的文章[JSON Wen Token 入门教程](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)。
 
-## 跨域认证的问题
+## 1.跨域认证的问题
 
 互联网服务一般的认证流程，
 
@@ -20,7 +20,7 @@
 
 而 JWT 转换了思路，将 JSON 数据返回给前端的，前端再次请求时候将数据发送到后端，后端进行验证，也就是服务器是无状态的，所以更加容易拓展。
 
-## JWT 的原理
+## 2.JWT 的原理
 
 JWT 的原理是，服务器认证以后，生成一个 JSON 对象，发回给用户，就像下面这样。
 
@@ -34,7 +34,7 @@ JWT 的原理是，服务器认证以后，生成一个 JSON 对象，发回给�
 
 之后用户与服务端通信的时候，都要发回这个 JSON 对象，服务器完全只靠这个对象认定用户身份。为了防止用户篡改数据，服务器在生成这个对象的时候，会用算法进行签名。
 
-## JWT 的数据结构
+## 3.JWT 的数据结构
 
 JWT 的由三个部分依次如下 Header（头部）、Payload（负载）、Signature（签名）组成
 
@@ -321,7 +321,7 @@ app.use(function (err, req, res, next) {
 });
 ```
 
-## 方案验证
+## 4.方案验证
 
 暂时没有提供客户端的实现，这里直接采用 postman 测试一下功能。
 
@@ -385,7 +385,7 @@ app.use(function (err, req, res, next) {
 
 项目地址：https://github.com/lcxcsy/express-collection
 
-## Reference
+## 5.Reference
 
 1. [JSON Web Token 入门教程](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
 2. [Node 中使用 Sequelize](https://www.liaoxuefeng.com/wiki/1022910821149312/1101571555324224)
