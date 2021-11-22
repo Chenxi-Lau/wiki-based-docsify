@@ -7,8 +7,9 @@ module.exports = {
   title: 'Blog',
   // 网页描述
   description: '保持一颗学徒的心',
-  head: [
+  dest: '.vuepress/dist/docs',
     // 页面icon
+  head: [
     ['link', { rel: 'icon', href: '/icon.png' }]
   ],
   // 端口号
@@ -49,8 +50,8 @@ module.exports = {
     resolve: {
       // 静态资源的别名
       alias: {
-        '@vuepress': '../images/vuepress',
-        '@vue': '../images/vue'
+        '@vuepress': './public/images/vuepress',
+        '@vue': './public/images/vue'
       }
     }
   }
