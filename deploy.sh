@@ -26,8 +26,10 @@ fi
 
 commit="$commitType: $commitInfo"
 
+echo $commit
+
 git add .
-git commit -m $commit
+git commit -m "$commit"
 git push
 
 echo "start build"
@@ -43,7 +45,7 @@ echo "cd docs/.vuepress/dist"
 
 git init
 git add -A
-git commit -m 'update：deploy'
+git commit -m ':pencil:update：deploy'
 
 echo "git push -f git@github.com:lcxcsy/blog.git master:gh-pages"
 git push -f git@github.com:lcxcsy/blog.git master:gh-pages
