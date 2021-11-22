@@ -1,3 +1,4 @@
+// 前端笔记，主要包括：CSS、JS、TS、Node的相关知识
 const noteSidebar = [
   {
     title: 'CSS',
@@ -36,18 +37,9 @@ const noteSidebar = [
     children: [ 
       'node/core.md',
     ]
-  },
-  {
-    title: 'Webpack',
-    collapsable: false,
-    children: [ 
-      'webpack/mechanism.md',
-      'webpack/loader.md',
-      'webpack/plugin.md',
-    ]
   }
 ]
-
+// Vue框架相关
 const vueSidebar =[
   {
     title: '基础模块',
@@ -55,7 +47,8 @@ const vueSidebar =[
     children: [ 
       'router.md',
       'store.md',
-      'components-props.md'
+      'components-props.md',
+      'composition-api.md'
     ]
   },
   {
@@ -63,7 +56,7 @@ const vueSidebar =[
     collapsable: false,
     children: [
       'reactivity.md', 
-      'virtualDom.md'
+      'virtual-dom.md'
     ]
   },
   {
@@ -75,7 +68,61 @@ const vueSidebar =[
   }
 ]
 
+// 项目经验案例
+const projectSidebar = [
+  {
+    title: '方法总结',
+    collapsable: false,
+    children: [ 
+      'project/access-control.md',
+      'project/crypto-aes.md',
+      'project/custom-table.md',
+      'project/file-download.md',
+      'project/json-web-token.md',
+      'project/local-ip.md',
+      'project/postMessage.md',
+      'project/tree-method.md',
+      'project/websocket.md'
+    ]
+  }, {
+    title: '前端流媒体',
+    collapsable: false,
+    children: [ 
+      'media/base-knowledge.md',
+      'media/mse.md',
+      'media/webRtc.md',
+    ]
+  }, {
+    title: '移动端相关',
+    collapsable: false,
+    children: [ 
+      'mobile/mobile-adaptation.md'
+    ]
+  }
+]
+
+// 前端工程化相关
+const webpackSidebar = [
+  {
+    title: 'Webpack',
+    collapsable: false,
+    children: [ 
+      'mechanism.md',
+      'modules.md',
+      'loader.md',
+      'plugin.md',
+    ]
+  }
+]
+
+// 算法数据结构相关
+
+
+// 面试总结
+
 module.exports = {
   noteSidebar,
-  vueSidebar
+  vueSidebar,
+  webpackSidebar,
+  projectSidebar
 }

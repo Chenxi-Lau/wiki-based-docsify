@@ -1,5 +1,5 @@
 const nav = require('./utils/nav.js')
-const { noteSidebar, vueSidebar } = nav
+const { noteSidebar, vueSidebar, webpackSidebar, projectSidebar } = nav
 
 module.exports = {
   base: '/blog/',
@@ -32,13 +32,17 @@ module.exports = {
     nav: [
       { text: '笔记',link: '/note/'},
       { text: '面经',link: '/interview/'},
+      { text: 'Vue.js', link: '/vue/'},
+      { text: 'Webpack', link: '/webpack/'},
+      { text: '经验案例', link: '/project/'},
       { text: '数据结构和算法', link: '/algorithm/'},
-      { text: 'Vue.js', link: '/vue/'}
     ],
     // 侧边栏配置
     sidebar: {
       '/note/': noteSidebar,
-      '/vue/': vueSidebar
+      '/vue/': vueSidebar,
+      '/webpack/': webpackSidebar,
+      '/project/': projectSidebar,
     },
   },
   configureWebpack: {
