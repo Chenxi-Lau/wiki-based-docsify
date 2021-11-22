@@ -52,4 +52,6 @@ git push -f git@github.com:lcxcsy/blog.git master:gh-pages
 
 echo "build finish"
 
+cd ../
+
 rm -rf dist
