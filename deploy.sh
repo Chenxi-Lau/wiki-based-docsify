@@ -39,19 +39,17 @@ set -e
 echo "npm run docs:build"
 npm run docs:build
 
-cd docs/.vuepress/dist
+cd dist
  
-echo "cd docs/.vuepress/dist"
+echo "cd dist"
 
 git init
 git add -A
-git commit -m ':pencil:update：deploy'
+git commit -m ':pencil:update：npm run build'
 
 echo "git push -f git@github.com:lcxcsy/blog.git master:gh-pages"
 git push -f git@github.com:lcxcsy/blog.git master:gh-pages
 
 echo "build finish"
-
-cd ../
 
 rm -rf dist
