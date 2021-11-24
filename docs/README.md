@@ -2,15 +2,14 @@
 home: true
 lang: zh-CN
 heroText: Morning's Blog
-heroImage: /logo.jpg
 actionText: 开始 →
 actionLink: /note/
 features:
-  - title: A Blog
-    details: 专注写作前端博客，记录日常所得。
+  - title: About Blog
+    details: 整理前端基础知识，记录日常所得，学习回顾加强记忆
   - title: For Me
-    details: 故九万里，则风斯在下矣，而后乃今培风；背负青天，而莫之夭阏者，而后乃今将图南。
+    details: ⚡ A web developer (one more year experience, continuous learning)；👯 Graduated from NJUPT；🔭 Currently learning Typescript, Vue3 (and some knowledge about React\Node)；4.😄 Fun fact —— has a girl who loves me
   - title: For Interview
-    details: 南京
-    footer: Copyright © 2020-present Chenxi_Liu
+    details: base南京，年后求内推
+footer: Copyright © 2020-present Chenxi Liu
 ---

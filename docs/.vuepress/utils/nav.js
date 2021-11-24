@@ -2,14 +2,15 @@
 const noteSidebar = [
   {
     title: 'CSS',
-    collapsable: false,
+    collapsable: true,
     children: [ 
+      'css/box-model.md',
       'css/pre-processor.md',
     ]
   },
   {
     title: 'JavaScript',
-    collapsable: false,
+    collapsable: true,
     children: [ 
       'javascript/basic-knowledge.md',
       'javascript/event-loop.md',
@@ -17,7 +18,7 @@ const noteSidebar = [
   },
   {
     title: 'ECMAScript',
-    collapsable: false,
+    collapsable: true,
     children: [ 
       'es6/class.md',
       'es6/map.md',
@@ -26,16 +27,30 @@ const noteSidebar = [
   },
   {
     title: 'TypeScript',
-    collapsable: false,
+    collapsable: true,
     children: [ 
-      'typescript/basic-knowledge.md',
+      'typescript/',
     ]
   },
   {
-    title: 'NodeJS',
-    collapsable: false,
+    title: 'NodeJs',
+    collapsable: true,
     children: [ 
       'node/core.md',
+    ]
+  },
+  {
+    title: 'Linux',
+    collapsable: true,
+    children: [ 
+      'linux/',
+    ]
+  },
+  {
+    title: '计算机网络',
+    collapsable: true,
+    children: [ 
+      'network/main',
     ]
   }
 ]
@@ -114,26 +129,11 @@ const projectSidebar = [
   }
 ]
 
-// 前端工程化相关
-const webpackSidebar = [
-  {
-    title: 'Webpack',
-    collapsable: false,
-    children: [ 
-      'mechanism.md',
-      'modules.md',
-      'loader.md',
-      'plugin.md',
-    ]
-  }
-]
-
 // 算法数据结构相关
 
 module.exports = {
   noteSidebar,
   interviewSidebar,
   vueSidebar,
-  webpackSidebar,
   projectSidebar
 }

@@ -1,16 +1,18 @@
 # 预处理器
 
-> CSS 预处理器定义了一种新的语言，其基本思想是，用一种专门的编程语言，为 CSS 增加了一些编程的特性，将 CSS 作为目标生成文件，然后开发者就只要使用这种语言进行编码工作。通俗的说，CSS 预处理器用一种专门的编程语言，进行 Web 页面样式设计，然后再编译成正常的 CSS 文件，以供项目使用。
+::: tip
+CSS 预处理器定义了一种新的语言，其基本思想是，用一种专门的编程语言，为 CSS 增加了一些编程的特性，将 CSS 作为目标生成文件开发者就只要使用这种语言进行编码工作。通俗的说，CSS 预处理器用一种专门的编程语言，进行 Web 页面样式设计，然后再编译成正常的 CSS 文件，以供项目使用。
+:::
 
 目前，目前 CSS 预处理器主要包括以下三种：
 
-- Sass/Scss
-- Less
-- Stylus
+- [Sass/Scss](https://www.sass.hk/)
+- [Less](https://less.bootcss.com/)
+- [Stylus](http://stylus.bootcss.com/)
 
-## 1.局部样式
+## 局部样式
 
-一般都是使用 scoped 方案：
+一般都是使用 `scoped` 方案：
 
 ```scss
 <style lang="scss" scoped>
@@ -18,8 +20,9 @@
 </style>
 ```
 
-携带有 scoped 标签的样式都带带有类似 [data-v-23d425f8]的属性，保证当前样式是私有的。 如果需要修改第三方组件的样式，需要采用深度选择器。
-less 语言：
+携带有 `scoped` 标签的样式都带带有类似 [data-v-23d425f8]的属性，保证当前样式是私有的。 如果需要修改第三方组件的样式，需要采用深度选择器。
+
+例如，在 scss 中深度选择器的用法如下：
 
 ```scss
 .van-tabs ::v-deep .van-ellipsis {
@@ -27,12 +30,24 @@ less 语言：
 }
 ```
 
-stylus 和 Sass 语言为 >>>，less 语言为/deep/。
+stylus 和 Sass 语言为 >>>，less 语言为/deep/
 
-## 2.全局样式
+```stylus
+.van-tabs >>> .van-ellipsis {
+  color: blue;
+}
+```
 
-在大型项目开发中，全局样式管理非常重要，通常，全局样式放置目录：@/styles。以 SCSS 样式为例，
-variable.scss 管理全局变量，例如：
+```less
+.van-tabs /deep/ .van-ellipsis {
+  color: blue;
+}
+```
+
+## 全局样式
+
+在大型项目开发中，全局样式管理非常重要，通常，全局样式放置目录：/src/styles。以 Scss 语言为例，可以新增
+variable.scss 用于管理全局变量，例如：
 
 ```scss
 // 主题色
@@ -128,7 +143,7 @@ module.exports = {
       scss: {
         prependData: `@import '@/styles/index.scss';`
       }
-      // stylus
+      // stylus 的配置
       // stylus: {
       //   import: ['~@/assets/styles/index.styl']
       // }

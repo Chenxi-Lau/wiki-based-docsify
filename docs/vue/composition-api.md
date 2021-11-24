@@ -11,7 +11,7 @@ composition-api 的优点：
 
 缺点：从 options api 切换到 composition api 最大的问题无异于最大的问题就是没有强制的代码分区，如果书写的人没有很好的代码习惯，那么后续的人将会看的十分难受。
 
-## Vue2 中的使用
+## 1.Vue2 中的使用
 
 ```sh
 npm i @vue/composition-api -S
@@ -26,7 +26,7 @@ import VueCompositionApi from '@vue/composition-api';
 Vue.use(VueCompositionApi);
 ```
 
-## 生命周期变化
+## 2.生命周期变化
 
 - beforeCreate -> setup()
 - created -> setup()
@@ -38,7 +38,7 @@ Vue.use(VueCompositionApi);
 - destroyed -> onUnmounted
 - errorCaptured -> onErrorCaptured
 
-## 钩子函数变化
+## 3.钩子函数变化
 
 ### setup
 
@@ -133,7 +133,7 @@ watchEffect(() => {
 1. `watchEffect` 在组件初始化时，立即执行传入的一个副作用函数，并且在副作用函数中使用的属性有变化时，会重新执行。需要注意，当副作用函数中执行的函数，若该函数又改变了响应式的数据，可能会造成死循环问题。
 2. `watch` 是监听指定的属性，当指定属性变化时，才会执行回调，watch 可以接收指定的一个或多个属性, watch 中可以获取状态变化前后的值。
 
-## 组件通信
+## 4.组件通信
 
 ### $emit
 
@@ -209,7 +209,7 @@ export default {
 </script>
 ```
 
-## 样式库中使用变化
+## 5.样式库中使用变化
 
 ### $message、$confirm
 

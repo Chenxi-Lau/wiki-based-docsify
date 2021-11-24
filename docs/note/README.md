@@ -1,27 +1,24 @@
-# 学习笔记
+# 前端学习笔记
 
-本站基于 [vuepress](https://vuepress.vuejs.org/zh/) 构建，可以依托 GitHub [快速部署](https://docsify.js.org/#/zh-cn/deploy) markdown 文档
+::: tip
+前端技术发展迅速，整理一些比较核心的前端知识点，系统地梳理一些知识，温故知新。
+:::
 
-## About
+## 前端应当学习什么？
 
-本站主要用于记录工作学习中梳理的前端笔记，目前，暂定分为以下几个模块:
+- `基础`和`原理性`的知识相比会更重要，他们具备更强的繁殖力。比如数据结构与算法、JS 设计模式、ECMAScript 规范、HTTP 原理、浏览器渲染机制、模块系统、Vue 和 React 的底层原理等，不管前端轮子造地多快，这些知识都很难过期，而且他们有延续性，还能引发思考。
+- 还有是「尽量选难的知识点」，越简单价值越小，一下就能学会得东西，价值也不会大。
+
+## 笔记目录
+
+目前，笔记这个版块暂定分为以下几个部分:
 
 - CSS
-- JS
-- ES
+- JavaScript
+- ECMAScript
+- TypeScript
 - NodeJs
-- 前端框架
-  - Vue
-  - React
-- 前端工程化
-  - webpack
-  - vite
-- Git
+- Linux
+- 计算机网络
 
-### Run
-
-```sh
-git clone git@github.com:lcxcsy/wiki.git
-
-npm run docs:dev
-```
+一些较为复杂的模块，例如构建工具 webpack、Vue 框架、数据结构与算法将放置在单独的模块去整理。
