@@ -1,6 +1,8 @@
 # 组合式 API
 
-> Composition-Api 是 Vue3.0 提出的，它以函数为载体，将业务相关的逻辑代码抽取到一起，整体打包对外提供相应能力。
+:::tip
+Composition-Api 是 Vue3.0 提出的，它以函数为载体，将业务相关的逻辑代码抽取到一起，整体打包对外提供相应能力。
+:::
 
 官网介绍：[什么是组合式 API？](https://v3.cn.vuejs.org/guide/composition-api-introduction.html#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BB%84%E5%90%88%E5%BC%8F-api)
 
@@ -11,7 +13,7 @@ composition-api 的优点：
 
 缺点：从 options api 切换到 composition api 最大的问题无异于最大的问题就是没有强制的代码分区，如果书写的人没有很好的代码习惯，那么后续的人将会看的十分难受。
 
-## 1.Vue2 中的使用
+## Vue2 中的使用
 
 ```sh
 npm i @vue/composition-api -S
@@ -26,7 +28,7 @@ import VueCompositionApi from '@vue/composition-api';
 Vue.use(VueCompositionApi);
 ```
 
-## 2.生命周期变化
+## 生命周期变化
 
 - beforeCreate -> setup()
 - created -> setup()
@@ -38,7 +40,7 @@ Vue.use(VueCompositionApi);
 - destroyed -> onUnmounted
 - errorCaptured -> onErrorCaptured
 
-## 3.钩子函数变化
+## 钩子函数变化
 
 ### setup
 
@@ -133,7 +135,7 @@ watchEffect(() => {
 1. `watchEffect` 在组件初始化时，立即执行传入的一个副作用函数，并且在副作用函数中使用的属性有变化时，会重新执行。需要注意，当副作用函数中执行的函数，若该函数又改变了响应式的数据，可能会造成死循环问题。
 2. `watch` 是监听指定的属性，当指定属性变化时，才会执行回调，watch 可以接收指定的一个或多个属性, watch 中可以获取状态变化前后的值。
 
-## 4.组件通信
+## 组件通信
 
 ### $emit
 
@@ -209,7 +211,7 @@ export default {
 </script>
 ```
 
-## 5.样式库中使用变化
+## 样式库中使用变化
 
 ### $message、$confirm
 

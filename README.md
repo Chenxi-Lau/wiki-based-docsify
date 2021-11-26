@@ -6,6 +6,8 @@
 
 本站基于 [vuepress](https://vuepress.vuejs.org/zh/) 构建，可以依托 GitHub [快速部署](https://vuepress.vuejs.org/zh/guide/deploy.html#github-pages) markdown 文档。
 
+![](https://github.com/lcxcsy/blog/blob/master/docs/.vuepress/public/home.png)
+
 ## 运行
 
 ```sh

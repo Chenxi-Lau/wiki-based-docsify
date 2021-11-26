@@ -12,8 +12,6 @@ Webpack 是一个现代 JavaScript 应用程序的**静态模块打包器**(modu
 
 ![图1-2 Webpack 简介](http://webpack.wuhaolin.cn/1%E5%85%A5%E9%97%A8/img/1-2webpack.png)
 
-参考资料：
-
 1. [Webpack 中文官网](https://webpack.docschina.org/)
 2. [深入浅出 Webpack](http://webpack.wuhaolin.cn/)
 
