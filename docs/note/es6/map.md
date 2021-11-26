@@ -1,8 +1,10 @@
 # Map 对象
 
-> Object 本质上是键值对的集合（Hash 结构），传统的 Object 结构提供了 "字符串—值" 的对应，而 Map 结构提供了"值—值"的对应，是一种更完善的 Hash 结构实现。
+:::tip
+Object 本质上是键值对的集合（Hash 结构），传统的 Object 结构提供了 "字符串—值" 的对应，而 Map 结构提供了"值—值"的对应，是一种更完善的 Hash 结构实现。
+:::
 
-## 1. 基本用法
+## 基本用法
 
 Map 可以接受一个数组作为参数。该数组的成员是一个个表示键值对的数组，例如：
 
@@ -12,8 +14,6 @@ const map = new Map([
   ['title', 'Author']
 ]);
 map.size; // 2
-map;
-// {"name" => "张三", "title" => "Author"}
 ```
 
 主要注意的是：
@@ -27,13 +27,13 @@ map.get(k1); // 111
 map.get(k2); // 222
 ```
 
-Map 的键实际上是跟内存地址绑定的，只要内存地址不一样，就视为两个键。
+Map 的键实际上是跟`内存地址`绑定的，只要内存地址不一样，就视为两个键。
 
 如果 Map 的键是一个简单类型的值，则只要两个值严格相等，Map 将其视为一个键，比如 0 和 -0 就是一个键。例如，布尔值 true 和字符串 true 则是两个不同的键。另外， undefined 和 null 也是两个不同的键。虽然 NaN 不严格相等于自身，但 Map 将其视为同一个键。
 
-## 2. 实例方法
+## 实例方法
 
-### 2.1 操作方法
+### 操作方法
 
 - set(key, value)：设置键名 key 对应的键值为 value ，然后返回整个 Map 结构
 - get(key)：读取 key 对应的键值，如果找不到 key ，返回 undefined
@@ -41,7 +41,7 @@ Map 的键实际上是跟内存地址绑定的，只要内存地址不一样，�
 - delete(key): 方法删除某个键，返回 true 。如果删除失败，返回 false
 - clear(): clear 方法清除所有成员，没有返回值
 
-### 2.2 遍历方法
+### 遍历方法
 
 结构原生提供三个遍历器生成函数和一个遍历方法:
 
@@ -79,7 +79,5 @@ for (let [key, value] of map) {
   console.log(key, value);
 }
 ```
-
-## References
 
 1. [https://es6.ruanyifeng.com/#docs/set-map](https://es6.ruanyifeng.com/#docs/set-map)

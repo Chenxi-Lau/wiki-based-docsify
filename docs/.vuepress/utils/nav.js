@@ -5,6 +5,7 @@ const noteSidebar = [
     collapsable: true,
     children: [ 
       'css/box-model.md',
+      'css/transition.md',
       'css/pre-processor.md',
     ]
   },
@@ -12,7 +13,7 @@ const noteSidebar = [
     title: 'JavaScript',
     collapsable: true,
     children: [ 
-      'javascript/basic-knowledge.md',
+      'javascript/core.md',
       'javascript/event-loop.md',
     ]
   },
@@ -23,6 +24,7 @@ const noteSidebar = [
       'es6/class.md',
       'es6/map.md',
       'es6/set.md',
+      'es6/symbol.md',
     ]
   },
   {
@@ -43,7 +45,7 @@ const noteSidebar = [
     title: 'Linux',
     collapsable: true,
     children: [ 
-      'linux/',
+      'linux/commands.md',
     ]
   },
   {

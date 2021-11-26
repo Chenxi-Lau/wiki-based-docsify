@@ -1,6 +1,8 @@
 # AES/ECB/PKCS5Padding 前后端加解密
 
-> 使用 CryptoJs 对登录密码进行 AES/ECB/PKCS5Padding 加密，后台进行机密。
+::: tip
+使用 CryptoJs 对登录密码进行 AES/ECB/PKCS5Padding 加密，后台进行机密。
+:::
 
 在数字加密算法中，通过可划分为对称加密和非对称加密。
 
